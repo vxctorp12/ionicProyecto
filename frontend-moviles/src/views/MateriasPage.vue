@@ -40,7 +40,9 @@
           </ion-item-options>
         </ion-item-sliding>
       </ion-list>
-
+      <div v-if="!loading && materias.length === 0" class="center-content empty-text">
+        <p>No hay materias aún.</p>
+      </div>
       <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button @click="openModal(null)" color="tertiary">
           <ion-icon :icon="add"></ion-icon>
@@ -131,5 +133,6 @@ const showToast = async (msg: string, color = 'success') => {
 .materia-card { margin-bottom: 10px; border-radius: 12px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; }
 .icon-box { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px; }
 .purple-light { background: rgba(var(--ion-color-tertiary-rgb), 0.15); }
-.center-content { display: flex; justify-content: center; align-items: center; height: 80%; }
+.center-content { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 80%; }
+.empty-text { color: #888; }
 </style>

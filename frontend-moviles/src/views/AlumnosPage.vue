@@ -38,7 +38,9 @@
 
         </ion-item-sliding>
       </ion-list>
-      
+      <div v-if="!loading && alumnos.length === 0" class="center-content empty-text">
+        <p>No hay alumnos aún.</p>
+      </div>
       <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button @click="createAlumno" color="tertiary">
           <ion-icon :icon="add"></ion-icon>

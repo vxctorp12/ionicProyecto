@@ -56,11 +56,7 @@
                 <h2>{{ alumno.nombre }}</h2>
               </ion-label>
               <div slot="end" class="grade-input-wrapper">
-                <ion-input 
-                  type="number" placeholder="-" class="grade-input"
-                  v-model="alumno.nota_valor" :min="0" :max="10"
-                  @ionBlur="guardarNota(alumno)" 
-                ></ion-input>
+<ion-input type="number" placeholder="-" class="grade-input" v-model="alumno.nota_valor" @ionInput="validarInput($event, alumno)"  @ionBlur="guardarNota(alumno)"></ion-input>
               </div>
             </ion-item>
           </ion-card>
@@ -150,15 +146,62 @@ const abrirActividad = async (actividad: any) => {
 };
 
 // 4. Guardar Nota
+// En tu <script setup>
+const validarInput = (ev: any, alumno: any) => {
+  const valor = parseFloat(ev.target.value);
+  
+  if (valor > 10) {
+    // Si escribe más de 10, lo forzamos a 10 (o lo borramos)
+    alumno.nota_valor = 10;
+  } 
+  if (valor < 0) {
+    // Si escribe negativo, lo ponemos en 0
+    alumno.nota_valor = 0;
+  }
+};
+// 4. Guardar Nota (CON VALIDACIÓN)
 const guardarNota = async (alumno: any) => {
+  // 1. Si está vacío, no hacemos nada
   if (alumno.nota_valor === null || alumno.nota_valor === '') return;
+
+  const valor = parseFloat(alumno.nota_valor);
+
+  // 2. VALIDACIÓN: Rango 0 a 10
+  if (valor < 0 || valor > 10) {
+    // Mostrar mensaje de error
+    const toast = await toastController.create({
+      message: 'La nota debe ser entre 0 y 10',
+      duration: 2000,
+      color: 'danger',
+      position: 'top'
+    });
+    await toast.present();
+
+    // Opcional: Borrar el dato inválido o regresarlo a un valor seguro
+    // alumno.nota_valor = null; 
+    return; // Detenemos la función aquí, no se guarda nada
+  }
+
+  // 3. Si pasa la validación, guardamos
   try {
     await axios.post('/notas', {
       matricula_id: alumno.matricula_id,
       actividad_id: actividadActual.value.id,
-      valor: alumno.nota_valor
+      valor: valor // Enviamos el valor ya validado
     });
-  } catch (e) { console.error(e); }
+    
+    // Opcional: Feedback visual de éxito
+    const toast = await toastController.create({
+      message: 'Nota guardada',
+      duration: 1000,
+      color: 'success',
+      position: 'bottom'
+    });
+    toast.present();
+
+  } catch (e) { 
+    console.error(e); 
+  }
 };
 </script>
 
