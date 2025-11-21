@@ -88,10 +88,45 @@ const confirm = () => {
 </script>
 
 <style scoped>
-/* Mismos estilos Outlined que ya tienes */
-.input-group { margin-top: 20px; }
-.input-group label { display: block; font-size: 13px; font-weight: 600; color: #333; margin-bottom: 8px; }
-.input-wrapper { border: 1px solid #E0E0E0; border-radius: 8px; background: #FFFFFF; padding: 0 12px; }
-.input-wrapper:focus-within { border-color: var(--ion-color-primary); }
-.custom-input, .custom-select { --padding-start: 0; --background: transparent; height: 45px; --color: #1A1A1A; }
+.input-group { 
+  margin-top: 20px; 
+}
+
+.input-group label { 
+  display: block; 
+  font-size: 13px; 
+  font-weight: 600; 
+  color: #333; 
+  margin-bottom: 8px; 
+}
+
+/* --- CONTENEDOR DEL INPUT (IGUAL AL LOGIN) --- */
+.input-wrapper { 
+  border: 1px solid #E0E0E0; 
+  border-radius: 8px; 
+  background: #FFFFFF; 
+  padding: 0 12px;
+  
+  /* AGREGADO: Transición suave para el efecto */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* --- EFECTO DE FOCO (EL GLOW AZUL) --- */
+.input-wrapper:focus-within { 
+  border-color: var(--ion-color-primary); 
+  /* AGREGADO: Sombra resplandeciente azul */
+  box-shadow: 0 0 0 4px rgba(var(--ion-color-primary-rgb), 0.15); 
+}
+
+/* --- LIMPIEZA DE ESTILOS INTERNOS DE IONIC --- */
+.custom-input, .custom-select { 
+  --padding-start: 0; 
+  --background: transparent; 
+  height: 45px; 
+  --color: #1A1A1A;
+  
+  /* AGREGADO: Quitamos la línea inferior por defecto de Ionic */
+  --highlight-height: 0; 
+  --highlight-color-focused: transparent;
+}
 </style>

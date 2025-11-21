@@ -25,9 +25,10 @@
             <div class="divider"></div>
 
             <ion-list lines="none">
-              <ion-item button :detail="true" class="option-item">
-                <ion-icon :icon="settingsOutline" slot="start" color="medium"></ion-icon>
-                <ion-label>Configuración</ion-label>
+              
+              <ion-item button :detail="true" class="option-item" @click="abrirModalPassword">
+                <ion-icon :icon="lockClosedOutline" slot="start" color="medium"></ion-icon>
+                <ion-label>Cambiar Contraseña</ion-label>
               </ion-item>
               
               <ion-item button :detail="true" class="option-item">
@@ -47,24 +48,76 @@
         <p class="version-text">Portal Estudiantil v1.0</p>
 
       </div>
+
+      <ion-modal :is-open="showPasswordModal" @didDismiss="showPasswordModal = false" :initial-breakpoint="0.65" :breakpoints="[0, 0.65, 0.9]">
+        <ion-content class="ion-padding">
+          
+          <div class="modal-header">
+            <h2>Nueva Contraseña</h2>
+            <p>Asegura tu cuenta actualizando tus credenciales.</p>
+          </div>
+
+          <div class="form-container">
+            <div class="input-group">
+              <label>Contraseña Actual</label>
+              <ion-item lines="none" class="custom-input">
+                <ion-input type="password" v-model="formPass.current_password" placeholder="******"></ion-input>
+              </ion-item>
+            </div>
+
+            <div class="input-group">
+              <label>Nueva Contraseña</label>
+              <ion-item lines="none" class="custom-input">
+                <ion-input type="password" v-model="formPass.new_password" placeholder="******"></ion-input>
+              </ion-item>
+            </div>
+
+            <div class="input-group">
+              <label>Confirmar Nueva</label>
+              <ion-item lines="none" class="custom-input">
+                <ion-input type="password" v-model="formPass.confirm_password" placeholder="******"></ion-input>
+              </ion-item>
+            </div>
+
+            <ion-button expand="block" class="btn-save" @click="guardarPassword" :disabled="loading">
+              <span v-if="!loading">ACTUALIZAR</span>
+              <ion-spinner v-else name="crescent"></ion-spinner>
+            </ion-button>
+          </div>
+
+        </ion-content>
+      </ion-modal>
+
     </ion-content>
   </ion-page>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import axios from 'axios';
 import { useAuthStore } from '@/stores/auth';
-import { settingsOutline, moonOutline, logOutOutline } from 'ionicons/icons';
+import { moonOutline, logOutOutline, lockClosedOutline } from 'ionicons/icons';
 import { 
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent, 
-  IonCard, IonCardContent, IonBadge, IonList, IonItem, IonIcon, IonLabel 
+  IonCard, IonCardContent, IonBadge, IonList, IonItem, IonIcon, IonLabel,
+  IonModal, IonInput, IonButton, IonSpinner, toastController
 } from '@ionic/vue';
 
 const authStore = useAuthStore();
 const router = useRouter();
 
-// Roles y Colores
+// Estado del Modal y Formulario
+const showPasswordModal = ref(false);
+const loading = ref(false);
+const formPass = ref({
+  current_password: '',
+  new_password: '',
+  confirm_password: ''
+});
+
+// --- LÓGICA DE UI ---
+
 const roleName = computed(() => {
   const roles: Record<number, string> = { 1: 'Administrador', 2: 'Docente', 3: 'Alumno' };
   return roles[authStore.user?.role_id as number] || 'Usuario';
@@ -79,6 +132,74 @@ const getUserInitials = () => {
   return (authStore.user?.name || 'U').charAt(0).toUpperCase();
 };
 
+// --- LÓGICA DE CAMBIO DE PASSWORD ---
+
+const abrirModalPassword = () => {
+  // Limpiamos el formulario antes de abrir
+  formPass.value = { current_password: '', new_password: '', confirm_password: '' };
+  showPasswordModal.value = true;
+};
+
+const guardarPassword = async () => {
+  // 1. Validaciones Locales (Se mantienen igual)
+  if (!formPass.value.current_password || !formPass.value.new_password) {
+    mostrarToast('Todos los campos son obligatorios', 'warning');
+    return;
+  }
+  if (formPass.value.new_password !== formPass.value.confirm_password) {
+    mostrarToast('Las nuevas contraseñas no coinciden', 'danger');
+    return;
+  }
+  if (formPass.value.new_password.length < 6) {
+    mostrarToast('La contraseña debe tener al menos 6 caracteres', 'warning');
+    return;
+  }
+
+  loading.value = true;
+
+  try {
+    // OBTENER EL TOKEN DEL STORE
+    // (Asegúrate de que tu authStore guarde el token en una variable llamada 'token' o 'access_token')
+    const token = authStore.token; 
+
+    // 2. Enviar a Laravel CON LA CABECERA DE AUTORIZACIÓN EXPLÍCITA
+    await axios.post('/change-password', {
+      current_password: formPass.value.current_password,
+      new_password: formPass.value.new_password,
+      new_password_confirmation: formPass.value.confirm_password
+    }, {
+      headers: {
+        Authorization: `Bearer ${token}` // <--- ESTO SOLUCIONA EL ERROR 401
+      }
+    });
+
+    mostrarToast('Contraseña actualizada correctamente', 'success');
+    showPasswordModal.value = false; 
+    
+    // Opcional: Limpiar formulario
+    formPass.value = { current_password: '', new_password: '', confirm_password: '' };
+
+  } catch (error: any) {
+    console.error(error);
+    const msg = error.response?.data?.message || 'Error al actualizar contraseña';
+    mostrarToast(msg, 'danger');
+  } finally {
+    loading.value = false;
+  }
+};
+
+// Helper para mostrar mensajes
+const mostrarToast = async (msg: string, color: string) => {
+  const toast = await toastController.create({
+    message: msg,
+    duration: 2000,
+    color: color,
+    position: 'top',
+    cssClass: 'custom-toast'
+  });
+  await toast.present();
+};
+
 const logout = () => {
   authStore.logout();
   router.replace('/login');
@@ -86,6 +207,7 @@ const logout = () => {
 </script>
 
 <style scoped>
+/* Estilos Generales */
 .profile-bg { --background: #F4F6F8; }
 .profile-container { padding: 20px; display: flex; flex-direction: column; align-items: center; }
 
@@ -98,24 +220,15 @@ const logout = () => {
   margin-top: 20px;
 }
 
-.avatar-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
+/* Avatar */
+.avatar-section { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
 .avatar-circle {
-  width: 80px;
-  height: 80px;
+  width: 80px; height: 80px;
   background: var(--ion-color-primary);
   color: white;
-  font-size: 32px;
-  font-weight: bold;
+  font-size: 32px; font-weight: bold;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   margin-bottom: 10px;
   box-shadow: 0 4px 10px rgba(var(--ion-color-primary-rgb), 0.3);
 }
@@ -126,7 +239,26 @@ const logout = () => {
 
 .divider { height: 1px; background: #F0F0F0; margin: 15px 0; width: 100%; }
 
+/* Lista */
 .option-item { --padding-start: 0; }
 .logout-item { margin-top: 10px; }
 .version-text { margin-top: 20px; color: #BBB; font-size: 12px; }
+
+/* --- ESTILOS DEL MODAL --- */
+.modal-header { text-align: center; margin-bottom: 25px; margin-top: 10px; }
+.modal-header h2 { font-weight: 800; color: var(--ion-color-dark); margin: 0 0 5px 0; }
+.modal-header p { margin: 0; color: #888; font-size: 0.9rem; }
+
+.form-container { padding: 0 10px; }
+.input-group { margin-bottom: 15px; }
+.input-group label { font-size: 0.85rem; color: #555; font-weight: 600; margin-left: 5px; display: block; margin-bottom: 5px; }
+
+.custom-input { 
+  --background: #F8F9FA; 
+  border-radius: 10px; 
+  border: 1px solid #E0E0E0; 
+  --padding-start: 10px;
+}
+
+.btn-save { margin-top: 30px; --border-radius: 10px; font-weight: bold; height: 48px; }
 </style>

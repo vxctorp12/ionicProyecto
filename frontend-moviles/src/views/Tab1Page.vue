@@ -105,13 +105,21 @@
           </div>
 
         <div v-else class="student-view">
-          <ion-card button @click="router.push('/mis-notas')" class="info-card">
-            <ion-card-content>
+          <ion-card button @click="router.push('/mis-notas')" class="menu-card big-card">
+            
+            <ion-card-content class="horizontal-content">
+              
               <div class="icon-box primary-light big-icon">
                 <ion-icon :icon="statsChart" color="primary"></ion-icon>
               </div>
-              <h3>Ver Mis Calificaciones</h3>
-              <p>Consulta tu promedio y notas por periodo.</p>
+              
+              <div class="text-content">
+                <h2>Ver Mis Calificaciones</h2>
+                <p>Consulta tu promedio y notas por periodo.</p>
+              </div>
+              
+              <ion-icon :icon="chevronForward" color="medium"></ion-icon>
+              
             </ion-card-content>
           </ion-card>
         </div>

@@ -6,6 +6,9 @@ namespace App\Http\Controllers;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 // 2. Implementa la interfaz "HasMiddleware"
 class AuthController extends Controller implements HasMiddleware
@@ -43,7 +46,28 @@ class AuthController extends Controller implements HasMiddleware
         auth()->logout();
         return response()->json(['message' => 'Successfully logged out']);
     }
+    public function changePassword(Request $request)
+{
+    $request->validate([
+        'current_password' => 'required',
+        'new_password' => 'required|min:6|confirmed', // 'confirmed' busca new_password_confirmation
+    ]);
 
+    $user = auth()->user();
+
+    // Verificar que la contraseña actual sea correcta
+    if (!Hash::check($request->current_password, $user->password)) {
+        throw ValidationException::withMessages([
+            'current_password' => ['La contraseña actual es incorrecta.'],
+        ]);
+    }
+
+    // Actualizar
+    $user->password = Hash::make($request->new_password);
+    $user->save();
+
+    return response()->json(['message' => 'Contraseña actualizada']);
+}
     protected function respondWithToken($token)
     {
         return response()->json([
