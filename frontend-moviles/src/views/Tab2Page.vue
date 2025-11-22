@@ -105,7 +105,7 @@ onIonViewWillEnter(() => {
 const loadCargaDocente = async () => {
   loading.value = true;
   try {
-    // Consultamos las cargas filtrando por el ID del usuario logueado
+    
     const response = await axios.get(`/cargas?user_id=${authStore.user.id}`);
     items.value = response.data;
   } catch (error) {
@@ -120,7 +120,7 @@ const loadCargaDocente = async () => {
 .bg-light { --background: #F4F6F8; }
 .custom-list { background: transparent; padding-top: 10px; }
 
-/* Estilos para Docente Cards */
+
 .course-card {
   margin-bottom: 10px;
   border-radius: 12px;

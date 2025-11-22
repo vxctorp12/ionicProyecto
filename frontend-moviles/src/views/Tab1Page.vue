@@ -175,7 +175,7 @@ const logout = () => {
 .dashboard-content { --background: var(--ion-color-light); }
 .dashboard-container { padding: 20px; max-width: 800px; margin: 0 auto; }
 
-/* Welcome Section */
+
 .welcome-section { background: white; border-radius: 16px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 25px; }
 .user-info { display: flex; align-items: center; gap: 15px; }
 .avatar-circle { width: 50px; height: 50px; background: var(--ion-color-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; }
@@ -183,27 +183,27 @@ const logout = () => {
 .greeting { margin: 0; font-size: 1.2rem; font-weight: 700; color: var(--ion-color-dark); }
 .role-badge { margin-top: 5px; padding: 5px 10px; border-radius: 6px; }
 
-/* Menu Cards */
+
 .section-title { font-size: 1.1rem; font-weight: 600; color: var(--ion-color-medium); margin-bottom: 15px; margin-left: 5px; }
 .menu-card { margin: 5px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); --background: white; transition: transform 0.1s; }
 .menu-card:active { transform: scale(0.98); }
 
-/* Estilos Grid Admin */
+
 .card-content-centered { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px !important; text-align: center; }
 .menu-card ion-label { font-weight: 600; color: var(--ion-color-dark); font-size: 0.95rem; margin-top: 10px; }
 
-/* Estilos Docente (Tarjeta Horizontal) */
+
 .big-card { margin-bottom: 20px; }
 .horizontal-content { display: flex; align-items: center; padding: 20px !important; }
 .text-content { flex: 1; margin-left: 15px; }
 .text-content h2 { margin: 0; font-size: 1.1rem; font-weight: 700; color: var(--ion-color-dark); }
 .text-content p { margin: 5px 0 0 0; color: var(--ion-color-medium); font-size: 0.9rem; }
 
-/* Icon Boxes */
+
 .icon-box { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 0; font-size: 24px; }
 .big-icon { width: 60px; height: 60px; font-size: 30px; }
 
-/* Colors */
+
 .primary-light { background: rgba(var(--ion-color-primary-rgb), 0.1); }
 .secondary-light { background: rgba(var(--ion-color-secondary-rgb), 0.1); }
 .tertiary-light { background: rgba(var(--ion-color-tertiary-rgb), 0.1); }
@@ -211,7 +211,7 @@ const logout = () => {
 .orange-light { background: #FFF3E0; color: #FF9800; }
 .teal-light { background: rgba(var(--ion-color-secondary-rgb), 0.15); }
 
-/* Info Card */
+
 .info-card { text-align: center; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 .info-card h3 { margin-top: 10px; font-weight: bold; color: var(--ion-color-dark); }
 </style>

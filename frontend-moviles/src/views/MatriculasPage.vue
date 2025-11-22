@@ -96,7 +96,7 @@ const openModal = async () => {
       showToast('Alumno inscrito correctamente');
       loadMatriculas();
     } catch (e: any) { 
-      // Mostrar mensaje de error del backend (ej. "Ya está matriculado")
+      
       const msg = e.response?.data?.message || 'Error al inscribir';
       showToast(msg, 'danger'); 
     }

@@ -148,16 +148,16 @@ import DetalleNotasModal from '@/components/DetalleNotasModal.vue';
 const router = useRouter();
 const authStore = useAuthStore();
 
-// Estado Principal
+
 const loading = ref(true);
 const infoMatricula = ref<any>(null);
 const boleta = ref<any[]>([]);
 const rawNotas = ref<any[]>([]);
 
-// Estado Historial
+
 const showHistorialModal = ref(false);
 const loadingHistorial = ref(false);
-const aniosDisponibles = ref<number[]>([]); // Se llenará desde API
+const aniosDisponibles = ref<number[]>([]); 
 const anioSeleccionado = ref<number | null>(null);
 const datosHistorial = ref<any>(null);
 
@@ -166,19 +166,19 @@ onIonViewWillEnter(() => loadData());
 const loadData = async () => {
   loading.value = true;
   try {
-    // 1. Cargar Matrícula Actual
-    const resMatricula = await axios.get(`/matriculas?user_id=${authStore.user.id}&activo=true`); // Asumimos un filtro 'activo' o tomamos el último
+   
+    const resMatricula = await axios.get(`/matriculas?user_id=${authStore.user.id}&activo=true`); 
     
     if (resMatricula.data.length > 0) {
-      // Tomamos la matricula más reciente (Ciclo actual)
+     
       infoMatricula.value = resMatricula.data[0]; 
       const matriculaId = infoMatricula.value.id;
       
-      // 2. Cargar Notas
+    
       const resNotas = await axios.get(`/notas?matricula_id=${matriculaId}`);
       rawNotas.value = resNotas.data;
 
-      // 3. Procesar Boleta
+      
       if (infoMatricula.value.grado?.materias) {
         boleta.value = infoMatricula.value.grado.materias.map((materia: any) => {
           const notasDeLaMateria = rawNotas.value.filter((n: any) => n.actividad?.materia_id === materia.id);
@@ -199,9 +199,12 @@ const loadData = async () => {
   }
 };
 
-// --- LÓGICA DE PROMEDIOS ---
 
-// 1. Promedio de una materia en un periodo (Horizontal)
+
+
+
+
+
 const calcularPromedioMateria = (notas: any[], periodo: string) => {
   const notasDelPeriodo = notas.filter((n: any) => n.actividad?.periodo === periodo);
   if (notasDelPeriodo.length === 0) return null;
@@ -209,7 +212,7 @@ const calcularPromedioMateria = (notas: any[], periodo: string) => {
   return (suma / notasDelPeriodo.length).toFixed(1);
 };
 
-// 2. Promedios Verticales (Computed) - Promedio del periodo de TODAS las materias
+
 const promedioVerticalP1 = computed(() => calcularPromedioVertical('p1'));
 const promedioVerticalP2 = computed(() => calcularPromedioVertical('p2'));
 const promedioVerticalP3 = computed(() => calcularPromedioVertical('p3'));
@@ -221,7 +224,7 @@ const calcularPromedioVertical = (keyPeriodo: string) => {
   let count = 0;
   
   boleta.value.forEach(materia => {
-    const nota = materia[keyPeriodo]; // Accedemos a 'p1', 'p2' o 'p3'
+    const nota = materia[keyPeriodo]; 
     if (nota && nota !== '-') {
       suma += parseFloat(nota);
       count++;
@@ -231,7 +234,7 @@ const calcularPromedioVertical = (keyPeriodo: string) => {
   return count > 0 ? (suma / count).toFixed(1) : '-';
 };
 
-// --- HISTORIAL ---
+
 
 const abrirHistorial = async () => {
   showHistorialModal.value = true;
@@ -239,16 +242,15 @@ const abrirHistorial = async () => {
   datosHistorial.value = null;
   
   try {
-    // 1. Consultar años donde el alumno tuvo matrícula
-    // Endpoint sugerido: /matriculas/anios-anteriores?user_id=...
+    
     const res = await axios.get(`/matriculas?user_id=${authStore.user.id}`); 
     
-    // Extraemos años únicos y excluimos el actual si es necesario
+    
     const anios = [...new Set(res.data.map((m: any) => m.anio))].sort().reverse();
     aniosDisponibles.value = anios as number[];
 
     if (aniosDisponibles.value.length > 0) {
-        // Seleccionar automáticamente el año anterior si existe, o el primero de la lista
+       
         anioSeleccionado.value = aniosDisponibles.value[0];
         await cargarDatosHistorial();
     }
@@ -261,20 +263,19 @@ const cargarDatosHistorial = async () => {
     loadingHistorial.value = true;
     
     try {
-        // Endpoint sugerido: /reportes/boleta-final?user_id=X&anio=Y
-        // Aquí debes conectar con tu backend real que calcule el promedio final
+      
         const res = await axios.get(`/boleta-historial?user_id=${authStore.user.id}&anio=${anioSeleccionado.value}`);
         datosHistorial.value = res.data; 
     } catch (e) {
         console.error(e);
-        // Fallback visual si falla la API
+       
         datosHistorial.value = null; 
     } finally {
         loadingHistorial.value = false;
     }
 };
 
-// --- UTILS & UI ---
+
 
 const verDetalle = async (materia: any, periodo: string) => {
   const notasDetalle = rawNotas.value.filter((n: any) => 
@@ -309,7 +310,7 @@ const getColorNota = (nota: any) => {
 .student-header h2 { margin: 0; font-weight: 800; color: #333; }
 .student-header p { margin: 5px 0 0; color: #666; }
 
-/* --- GRID DE PROMEDIOS SUPERIORES (P1, P2, P3) --- */
+
 .summary-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -326,7 +327,7 @@ const getColorNota = (nota: any) => {
 .p-label { display: block; font-size: 0.75rem; color: #888; font-weight: 600; text-transform: uppercase; margin-bottom: 4px; }
 .p-value { font-size: 1.4rem; font-weight: 800; }
 
-/* --- TARJETAS DE MATERIAS --- */
+
 .grade-card { margin-bottom: 15px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); background: white; }
 .grade-card ion-card-title { font-size: 1rem; font-weight: 700; color: #444; }
 .periodos-grid { display: flex; justify-content: space-around; background: #FAFAFA; padding: 10px; border-radius: 8px; }
@@ -338,7 +339,7 @@ const getColorNota = (nota: any) => {
 
 .materia-promedio { text-align: center; font-size: 0.75rem; color: #BBB; border-top: 1px solid #F0F0F0; padding-top: 8px; margin-top: 8px; }
 
-/* --- ESTILOS MODAL HISTORIAL --- */
+
 .year-select-container { margin-bottom: 20px; display: flex; align-items: center; gap: 10px; background: white; padding: 10px; border-radius: 10px; }
 .custom-html-select { flex: 1; padding: 8px; border: 1px solid #DDD; border-radius: 6px; font-size: 1rem; background: white; }
 
@@ -358,7 +359,7 @@ const getColorNota = (nota: any) => {
 .history-list ion-item { --padding-start: 0; }
 .final-grade { font-size: 1.2rem; font-weight: bold; }
 
-/* Colores */
+
 .text-green { color: var(--ion-color-success); }
 .text-red { color: var(--ion-color-danger); }
 </style>

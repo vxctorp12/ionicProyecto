@@ -15,47 +15,47 @@ import MisNotasPage from '@/views/MisNotasPage.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/login' // <--- CAMBIAR: Redirigir a login primero
+    redirect: '/login' 
   },
   {
-    path: '/mis-notas', // <--- NUEVA RUTA
+    path: '/mis-notas', 
     component: MisNotasPage   
   },
   {
-    path: '/login', // <--- NUEVA RUTA
+    path: '/login', 
     component: LoginPage
   },
   {
-    path: '/mis-cursos', // <--- NUEVA RUTA
+    path: '/mis-cursos', 
     component: DocenteCursosPage  
   },
   {
-    path: '/grados', // <--- NUEVA RUTA
+    path: '/grados', 
     component: GradosPage
   },
   {
-    // Usamos :parametro para indicar que es dinámico
+
     path: '/notas/:materiaId/:gradoId/:nombreMateria',
     component: NotasPage
   },
   {
-    path: '/cargas', // <--- NUEVA RUTA
+    path: '/cargas', 
     component: CargasPage
   },
   {
-    path: '/materias', // <--- NUEVA RUTA
+    path: '/materias', 
     component: MateriasPage
   },
   {
-    path: '/docentes', // <--- NUEVA RUTA
+    path: '/docentes', 
     component: DocentesPage
   },
   {
-    path: '/alumnos', // <--- NUEVA RUTA
+    path: '/alumnos', 
     component: AlumnosPage
   },
   {
-    path: '/matriculas', // <--- NUEVA RUTA
+    path: '/matriculas', 
     component: MatriculasPage
   },
   {

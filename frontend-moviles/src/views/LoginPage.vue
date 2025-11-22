@@ -110,7 +110,7 @@ const handleLogin = async () => {
 </script>
 
 <style scoped>
-/* Fondo General */
+
 .login-bg {
   --background: #F4F6F8;
 }
@@ -132,7 +132,7 @@ const handleLogin = async () => {
   overflow: visible;
 }
 
-/* Logo y Títulos */
+
 .logo-container {
   text-align: center;
   margin-bottom: 30px;
@@ -167,7 +167,7 @@ const handleLogin = async () => {
   margin-top: 5px;
 }
 
-/* --- INPUTS PERSONALIZADOS --- */
+
 .input-group {
   margin-bottom: 20px;
   text-align: left;
@@ -184,20 +184,20 @@ const handleLogin = async () => {
 .input-wrapper {
   display: flex;
   align-items: center;
-  border: 1px solid #E0E0E0; /* Borde gris apagado inicial */
+  border: 1px solid #E0E0E0; 
   border-radius: 8px;
   background: #FFFFFF;
   padding: 0 12px;
-  /* Transición suave para el efecto del borde */
+  
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* --- EFECTO AL HACER CLICK (FOCUS) EN TODO EL BORDE --- */
+
 .input-wrapper:focus-within {
-  /* 1. Cambiamos el color del borde a Azul Principal */
+ 
   border-color: var(--ion-color-primary); 
   
-  /* 2. (Opcional) Agregamos un resplandor suave azul alrededor */
+  
   box-shadow: 0 0 0 4px rgba(var(--ion-color-primary-rgb), 0.15); 
 }
 
@@ -208,7 +208,7 @@ const handleLogin = async () => {
   transition: color 0.3s;
 }
 
-/* Al hacer foco, también pintamos el icono de azul */
+
 .input-wrapper:focus-within .input-icon {
   color: var(--ion-color-primary);
 }
@@ -220,15 +220,14 @@ const handleLogin = async () => {
   height: 45px;
   font-size: 14px;
 
-  /* --- AQUÍ QUITAMOS LA LÍNEA INFERIOR --- */
-  --highlight-height: 0; /* Esto elimina la línea azul de abajo */
+ 
+  --highlight-height: 0; 
   --highlight-color-focused: transparent;
   
-  /* --- COLORES DE TEXTO --- */
-  /* Color del texto ingresado (Gris muy oscuro / Negro suave) */
+
   --color: #1A1A1A !important; 
   
-  /* Color del placeholder (Gris claro para contraste) */
+  
   --placeholder-color: #A0A0A0 !important;
   --placeholder-opacity: 1;
 }
@@ -239,7 +238,7 @@ const handleLogin = async () => {
   cursor: pointer;
 }
 
-/* Links y Botones */
+
 .forgot-pass {
   text-align: right;
   margin-bottom: 25px;

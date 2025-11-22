@@ -61,15 +61,15 @@ const form = ref({
 
 const grados = ref<any[]>([]);
 
-// Cargar datos
+
 onMounted(async () => {
-  // 1. Obtenemos la lista de grados para llenar el select
+
   try {
     const response = await axios.get('/grados');
     grados.value = response.data;
   } catch (e) { console.error('Error cargando grados'); }
 
-  // 2. Si es edición, llenamos el formulario
+
   if (props.materia) {
     form.value.nombre = props.materia.nombre;
     form.value.grado_id = props.materia.grado_id;
@@ -100,32 +100,32 @@ const confirm = () => {
   margin-bottom: 8px; 
 }
 
-/* --- CONTENEDOR DEL INPUT (IGUAL AL LOGIN) --- */
+
 .input-wrapper { 
   border: 1px solid #E0E0E0; 
   border-radius: 8px; 
   background: #FFFFFF; 
   padding: 0 12px;
   
-  /* AGREGADO: Transición suave para el efecto */
+ 
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* --- EFECTO DE FOCO (EL GLOW AZUL) --- */
+
 .input-wrapper:focus-within { 
   border-color: var(--ion-color-primary); 
-  /* AGREGADO: Sombra resplandeciente azul */
+
   box-shadow: 0 0 0 4px rgba(var(--ion-color-primary-rgb), 0.15); 
 }
 
-/* --- LIMPIEZA DE ESTILOS INTERNOS DE IONIC --- */
+
 .custom-input, .custom-select { 
   --padding-start: 0; 
   --background: transparent; 
   height: 45px; 
   --color: #1A1A1A;
   
-  /* AGREGADO: Quitamos la línea inferior por defecto de Ionic */
+
   --highlight-height: 0; 
   --highlight-color-focused: transparent;
 }
