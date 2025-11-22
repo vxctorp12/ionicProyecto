@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject; // <--- IMPORTANTE
-
-class User extends Authenticatable implements JWTSubject // <--- IMPORTANTE
+use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject; 
+class User extends Authenticatable implements JWTSubject 
 {
     use Notifiable;
 
@@ -22,7 +21,6 @@ class User extends Authenticatable implements JWTSubject // <--- IMPORTANTE
         'remember_token',
     ];
 
-    // --- AGREGA ESTOS DOS MÉTODOS OBLIGATORIOS PARA JWT ---
 
     public function getJWTIdentifier()
     {
