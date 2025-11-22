@@ -53,7 +53,6 @@ const confirm = () => {
 </script>
 
 <style scoped>
-/* Reutilizando tus estilos Outlined */
 .input-group { margin-top: 20px; }
 .input-group label { display: block; font-size: 13px; font-weight: 600; color: #333; margin-bottom: 8px; }
 .input-wrapper { border: 1px solid #E0E0E0; border-radius: 8px; background: #FFFFFF; padding: 0 12px; transition: all 0.3s; }

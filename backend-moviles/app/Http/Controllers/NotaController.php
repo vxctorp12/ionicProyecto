@@ -14,10 +14,8 @@ class NotaController extends Controller implements HasMiddleware
         return [ new Middleware('auth:api') ];
     }
 
-    // Ver notas (Filtradas por alumno o materia)
     public function index(Request $request)
     {
-        // CAMBIO IMPORTANTE: Agregamos with('actividad') para traer los datos relacionados
         $query = Nota::with('actividad'); 
 
         if ($request->has('actividad_id')) {
@@ -28,7 +26,6 @@ class NotaController extends Controller implements HasMiddleware
             $query->where('matricula_id', $request->matricula_id);
         }
 
-        // Filtro extra opcional: devolver notas de una materia específica (a través de actividad)
         if ($request->has('materia_id')) {
              $query->whereHas('actividad', function($q) use ($request) {
                  $q->where('materia_id', $request->materia_id);
@@ -38,11 +35,10 @@ class NotaController extends Controller implements HasMiddleware
         return $query->get();
     }
 
-    // Guardar Nota (Crear o Actualizar si ya existe para ese periodo)
     public function store(Request $request) {
     $request->validate([
         'matricula_id' => 'required',
-        'actividad_id' => 'required', // Ahora validamos actividad
+        'actividad_id' => 'required',
         'valor' => 'required|numeric|min:0|max:10'
     ]);
 

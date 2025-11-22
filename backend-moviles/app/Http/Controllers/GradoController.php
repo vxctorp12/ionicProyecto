@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Grado; // Asegúrate de tener el Modelo creado, si no, avísame.
+use App\Models\Grado;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;

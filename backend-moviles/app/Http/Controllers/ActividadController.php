@@ -5,7 +5,6 @@ use Illuminate\Http\Request;
 
 class ActividadController extends Controller {
     
-    // Listar actividades de una materia en un periodo
     public function index(Request $request) {
         $query = Actividad::query();
         if ($request->has('materia_id')) $query->where('materia_id', $request->materia_id);
@@ -13,7 +12,6 @@ class ActividadController extends Controller {
         return $query->get();
     }
 
-    // Crear actividad
     public function store(Request $request) {
         $validated = $request->validate([
             'materia_id' => 'required',
@@ -23,7 +21,6 @@ class ActividadController extends Controller {
         return Actividad::create($validated);
     }
     
-    // Borrar actividad
     public function destroy($id) {
         Actividad::destroy($id);
         return response()->json(['msg' => 'Eliminado']);

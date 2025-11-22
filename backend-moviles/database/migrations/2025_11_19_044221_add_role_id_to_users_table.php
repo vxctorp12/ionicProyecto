@@ -9,7 +9,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            // Crea la columna role_id y la vincula con la tabla roles
             $table->foreignId('role_id')->after('id')->constrained('roles');
         });
     }
@@ -17,7 +16,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            // Si revertimos, borramos la columna
             $table->dropForeign(['role_id']);
             $table->dropColumn('role_id');
         });

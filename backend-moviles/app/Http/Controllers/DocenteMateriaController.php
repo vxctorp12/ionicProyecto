@@ -14,27 +14,24 @@ class DocenteMateriaController extends Controller implements HasMiddleware
         return [ new Middleware('auth:api') ];
     }
 
-    // LISTAR: Permite filtrar por docente (?user_id=5)
     public function index(Request $request)
     {
         $query = DocenteMateria::with(['docente', 'materia.grado']);
 
-        if ($request->has('user_id')) { // Ver materias de un profe específico
+        if ($request->has('user_id')) {
             $query->where('user_id', $request->user_id);
         }
 
         return $query->get();
     }
 
-    // ASIGNAR
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'required|exists:users,id', // El docente
+            'user_id' => 'required|exists:users,id',
             'materia_id' => 'required|exists:materias,id'
         ]);
 
-        // Evitar duplicados
         $existe = DocenteMateria::where('user_id', $request->user_id)
                                 ->where('materia_id', $request->materia_id)
                                 ->exists();
@@ -44,7 +41,6 @@ class DocenteMateriaController extends Controller implements HasMiddleware
         return DocenteMateria::create($request->all());
     }
 
-    // ELIMINAR ASIGNACIÓN
     public function destroy($id)
     {
         DocenteMateria::destroy($id);

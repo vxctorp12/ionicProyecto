@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-// 1. Importa estas dos clases OBLIGATORIAS en Laravel 12
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
@@ -10,21 +9,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
-// 2. Implementa la interfaz "HasMiddleware"
 class AuthController extends Controller implements HasMiddleware
 {
-    // 3. BORRA la función __construct() antigua.
-    // Y agrega esta función estática nueva:
     public static function middleware(): array
     {
         return [
-            // Aquí definimos que 'auth:api' proteja todo EXCEPTO el login
             new Middleware('auth:api', except: ['login']),
         ];
     }
 
-    // ... El resto de tus funciones (login, me, logout) se quedan IGUAL ...
-    
     public function login()
     {
         $credentials = request(['email', 'password']);
@@ -50,19 +43,17 @@ class AuthController extends Controller implements HasMiddleware
 {
     $request->validate([
         'current_password' => 'required',
-        'new_password' => 'required|min:6|confirmed', // 'confirmed' busca new_password_confirmation
+        'new_password' => 'required|min:6|confirmed',
     ]);
 
     $user = auth()->user();
 
-    // Verificar que la contraseña actual sea correcta
     if (!Hash::check($request->current_password, $user->password)) {
         throw ValidationException::withMessages([
             'current_password' => ['La contraseña actual es incorrecta.'],
         ]);
     }
 
-    // Actualizar
     $user->password = Hash::make($request->new_password);
     $user->save();
 

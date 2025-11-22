@@ -9,7 +9,7 @@ class DocenteMateria extends Model
 {
     use HasFactory;
 
-    protected $table = 'docente_materias'; // Especificamos la tabla por si acaso
+    protected $table = 'docente_materias';
 
     protected $fillable = ['user_id', 'materia_id'];
 
