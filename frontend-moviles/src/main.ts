@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router';
 import axios from 'axios';
 
-// 1. IMPORTAR PINIA (FALTA ESTO)
+
 import { createPinia } from 'pinia'; 
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000/api';
@@ -32,12 +32,12 @@ const token = localStorage.getItem('token');
 if (token) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 }
-// 2. CREAR LA INSTANCIA (FALTA ESTO)
+
 const pinia = createPinia();
 
 const app = createApp(App)
   .use(IonicVue)
-  .use(pinia) // 3. USAR PINIA (FALTA ESTO)
+  .use(pinia) 
   .use(router);
 
 router.isReady().then(() => {

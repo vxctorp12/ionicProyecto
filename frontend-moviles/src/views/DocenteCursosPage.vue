@@ -69,7 +69,7 @@ onIonViewWillEnter(() => loadCursos());
 const loadCursos = async () => {
   loading.value = true;
   try {
-    // IMPORTANTE: Filtra las cargas por el ID del usuario logueado (el profe)
+  
     const response = await axios.get(`/cargas?user_id=${authStore.user.id}`);
     cursos.value = response.data;
   } catch (error) {
@@ -81,12 +81,12 @@ const loadCursos = async () => {
 
 // ...
 const irACalificar = (carga: any) => {
-  // Construimos la URL con los datos de la carga
+ 
   const materiaId = carga.materia_id;
-  const gradoId = carga.materia.grado_id; // Necesitamos el grado para buscar alumnos
+  const gradoId = carga.materia.grado_id; 
   const nombre = carga.materia.nombre;
 
-  // Navegamos a la nueva página
+  
   router.push(`/notas/${materiaId}/${gradoId}/${nombre}`);
 };
 // ...

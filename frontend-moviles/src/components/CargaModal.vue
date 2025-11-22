@@ -69,7 +69,7 @@ const materias = ref<any[]>([]);
 
 onMounted(async () => {
   try {
-    // Cargar Docentes (Rol 2) y Materias en paralelo
+
     const [resDocentes, resMaterias] = await Promise.all([
       axios.get('/users?role_id=2'),
       axios.get('/materias')

@@ -69,7 +69,7 @@ const grados = ref<any[]>([]);
 
 onMounted(async () => {
   try {
-    // Cargar Alumnos (Role 3) y Grados en paralelo
+  
     const [resAlumnos, resGrados] = await Promise.all([
       axios.get('/users?role_id=3'),
       axios.get('/grados')
@@ -94,7 +94,7 @@ const confirm = () => {
 </script>
 
 <style scoped>
-/* Estilos Outlined consistentes */
+
 .input-group { margin-bottom: 20px; }
 .input-group label { display: block; font-size: 13px; font-weight: 600; color: #333; margin-bottom: 8px; }
 .input-wrapper { border: 1px solid #E0E0E0; border-radius: 8px; background: #FFFFFF; padding: 0 12px; transition: all 0.3s; }

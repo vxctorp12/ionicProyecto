@@ -107,7 +107,7 @@ import {
 const authStore = useAuthStore();
 const router = useRouter();
 
-// Estado del Modal y Formulario
+
 const showPasswordModal = ref(false);
 const loading = ref(false);
 const formPass = ref({
@@ -116,7 +116,7 @@ const formPass = ref({
   confirm_password: ''
 });
 
-// --- LÓGICA DE UI ---
+
 
 const roleName = computed(() => {
   const roles: Record<number, string> = { 1: 'Administrador', 2: 'Docente', 3: 'Alumno' };
@@ -132,16 +132,16 @@ const getUserInitials = () => {
   return (authStore.user?.name || 'U').charAt(0).toUpperCase();
 };
 
-// --- LÓGICA DE CAMBIO DE PASSWORD ---
+
 
 const abrirModalPassword = () => {
-  // Limpiamos el formulario antes de abrir
+  
   formPass.value = { current_password: '', new_password: '', confirm_password: '' };
   showPasswordModal.value = true;
 };
 
 const guardarPassword = async () => {
-  // 1. Validaciones Locales (Se mantienen igual)
+  
   if (!formPass.value.current_password || !formPass.value.new_password) {
     mostrarToast('Todos los campos son obligatorios', 'warning');
     return;
@@ -158,25 +158,24 @@ const guardarPassword = async () => {
   loading.value = true;
 
   try {
-    // OBTENER EL TOKEN DEL STORE
-    // (Asegúrate de que tu authStore guarde el token en una variable llamada 'token' o 'access_token')
+   
     const token = authStore.token; 
 
-    // 2. Enviar a Laravel CON LA CABECERA DE AUTORIZACIÓN EXPLÍCITA
+  
     await axios.post('/change-password', {
       current_password: formPass.value.current_password,
       new_password: formPass.value.new_password,
       new_password_confirmation: formPass.value.confirm_password
     }, {
       headers: {
-        Authorization: `Bearer ${token}` // <--- ESTO SOLUCIONA EL ERROR 401
+        Authorization: `Bearer ${token}` 
       }
     });
 
     mostrarToast('Contraseña actualizada correctamente', 'success');
     showPasswordModal.value = false; 
     
-    // Opcional: Limpiar formulario
+    
     formPass.value = { current_password: '', new_password: '', confirm_password: '' };
 
   } catch (error: any) {
@@ -188,7 +187,7 @@ const guardarPassword = async () => {
   }
 };
 
-// Helper para mostrar mensajes
+
 const mostrarToast = async (msg: string, color: string) => {
   const toast = await toastController.create({
     message: msg,
@@ -207,7 +206,7 @@ const logout = () => {
 </script>
 
 <style scoped>
-/* Estilos Generales */
+
 .profile-bg { --background: #F4F6F8; }
 .profile-container { padding: 20px; display: flex; flex-direction: column; align-items: center; }
 
@@ -220,7 +219,7 @@ const logout = () => {
   margin-top: 20px;
 }
 
-/* Avatar */
+
 .avatar-section { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
 .avatar-circle {
   width: 80px; height: 80px;
@@ -239,12 +238,12 @@ const logout = () => {
 
 .divider { height: 1px; background: #F0F0F0; margin: 15px 0; width: 100%; }
 
-/* Lista */
+
 .option-item { --padding-start: 0; }
 .logout-item { margin-top: 10px; }
 .version-text { margin-top: 20px; color: #BBB; font-size: 12px; }
 
-/* --- ESTILOS DEL MODAL --- */
+
 .modal-header { text-align: center; margin-bottom: 25px; margin-top: 10px; }
 .modal-header h2 { font-weight: 800; color: var(--ion-color-dark); margin: 0 0 5px 0; }
 .modal-header p { margin: 0; color: #888; font-size: 0.9rem; }

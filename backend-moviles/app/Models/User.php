@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
+use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject; // <--- IMPORTANTE
 
-class User extends Authenticatable implements JWTSubject
+class User extends Authenticatable implements JWTSubject // <--- IMPORTANTE
 {
     use Notifiable;
 
@@ -14,13 +14,15 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
-        'role_id',
+        'role_id', // Asegúrate de que este campo esté aquí
     ];
 
     protected $hidden = [
         'password',
         'remember_token',
     ];
+
+    // --- AGREGA ESTOS DOS MÉTODOS OBLIGATORIOS PARA JWT ---
 
     public function getJWTIdentifier()
     {
@@ -30,7 +32,7 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [
-            'role_id' => $this->role_id,
+            'role_id' => $this->role_id, // Guardamos el rol en el token para usarlo en el Frontend
         ];
     }
 }

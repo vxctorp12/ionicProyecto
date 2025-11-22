@@ -59,7 +59,7 @@ import {
   IonInput, IonSelect, IonSelectOption 
 } from '@ionic/vue';
 
-// ACEPTAMOS UN NUEVO PROP: fixedRole
+
 const props = defineProps<{ 
   user?: any; 
   fixedRole?: number; 
@@ -74,7 +74,7 @@ const form = ref({
 
 const title = computed(() => {
   if (props.user) return 'Editar Usuario';
-  // Si el rol es fijo y es 2, mostramos "Nuevo Docente"
+
   if (props.fixedRole === 2) return 'Nuevo Docente';
   if (props.fixedRole === 3) return 'Nuevo Alumno';
   return 'Nuevo Usuario';
@@ -82,12 +82,12 @@ const title = computed(() => {
 
 onMounted(() => {
   if (props.user) {
-    // EDICIÓN
+ 
     form.value.name = props.user.name;
     form.value.email = props.user.email;
     form.value.role_id = props.user.role_id;
   } else if (props.fixedRole) {
-    // CREACIÓN CON ROL FIJO
+   
     form.value.role_id = props.fixedRole;
   }
 });
@@ -104,7 +104,7 @@ const confirm = () => {
 </script>
 
 <style scoped>
-/* (Mismos estilos que ya tenías, no hace falta cambiarlos) */
+
 .input-group { margin-bottom: 20px; }
 .input-group label { display: block; font-size: 13px; font-weight: 600; color: #333; margin-bottom: 8px; }
 .input-wrapper { border: 1px solid #E0E0E0; border-radius: 8px; background: #FFFFFF; padding: 0 12px; transition: all 0.3s; }

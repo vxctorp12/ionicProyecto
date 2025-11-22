@@ -26,12 +26,12 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useAuthStore } from '@/stores/auth'; // Importar el store
+import { useAuthStore } from '@/stores/auth'; 
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
 import { home, layers, personCircle } from 'ionicons/icons';
 
 const authStore = useAuthStore();
 
-// Calculamos si es alumno (Rol 3)
+
 const isAlumno = computed(() => authStore.user?.role_id === 3);
 </script>

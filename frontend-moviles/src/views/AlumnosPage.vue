@@ -75,21 +75,20 @@ onIonViewWillEnter(() => loadAlumnos());
 const loadAlumnos = async () => {
   loading.value = true;
   try {
-    // ESTO ES LO QUE OCULTA A LOS ADMINS Y DOCENTES
+    
     const response = await axios.get('/users?role_id=3'); 
     alumnos.value = response.data;
   } catch (error) { console.error(error); } 
   finally { loading.value = false; }
 };
 
-// ... (El resto de funciones create, edit, delete igual que DocentesPage) ...
-// Si necesitas el resto del código script avísame, pero es igual al de Docentes cambiando el role fijo a 3
+
 const openModal = async (userToEdit: any = null) => {
   const modal = await modalController.create({
     component: UserModal,
     componentProps: { 
       user: userToEdit,
-      fixedRole: 3 // Forzamos rol Alumno
+      fixedRole: 3 
     }
   });
 
@@ -116,7 +115,7 @@ const deleteAlumno = async (id: number) => {
 </script>
 
 <style scoped>
-/* Mismos estilos que DocentesPage */
+
 .bg-light { --background: #F4F6F8; }
 .custom-list { background: transparent; padding-top: 10px; }
 .user-card { margin-bottom: 10px; border-radius: 12px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; }

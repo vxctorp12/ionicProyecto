@@ -71,7 +71,7 @@ const router = useRouter();
 const docentes = ref<any[]>([]);
 const loading = ref(true);
 
-// Navegación manual
+
 const goBack = () => router.push('/tabs/tab1');
 
 onIonViewWillEnter(() => loadDocentes());
@@ -79,20 +79,20 @@ onIonViewWillEnter(() => loadDocentes());
 const loadDocentes = async () => {
   loading.value = true;
   try {
-    // FILTRO CLAVE: ?role_id=2
+    
     const response = await axios.get('/users?role_id=2');
     docentes.value = response.data;
   } catch (error) { console.error(error); } 
   finally { loading.value = false; }
 };
 
-// ABRIR MODAL
+
 const openModal = async (userToEdit: any = null) => {
   const modal = await modalController.create({
     component: UserModal,
     componentProps: { 
       user: userToEdit,
-      fixedRole: 2 // <--- TRUCO: Forzamos que sea rol Docente
+      fixedRole: 2 
     }
   });
 
