@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <ion-header>
+    <ion-header class="ion-no-border header-safe-area">
       <ion-toolbar color="primary">
         <ion-buttons slot="start">
           <ion-button @click="goBack">
@@ -141,11 +141,11 @@ const showToast = async (msg: string, color = 'success') => {
 </script>
 
 <style scoped>
-.bg-light { --background: #F4F6F8; }
+.bg-light { --background: var(--ion-background-color); }
 .custom-list { background: transparent; padding-top: 10px; }
-.user-card { margin-bottom: 10px; border-radius: 12px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; }
+.user-card { margin-bottom: 10px; border-radius: 12px; background: var(--ion-card-background, white); box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; }
 .avatar-circle { width: 40px; height: 40px; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px; font-size: 16px; }
 .bg-blue { background: var(--ion-color-primary); }
 .center-content { display: flex; justify-content: center; align-items: center; height: 80%; }
-.empty-text { color: #888; }
+.empty-text { color: var(--ion-color-medium); }
 </style>

@@ -1,14 +1,13 @@
 <template>
   <ion-page>
-    <ion-header>
+    <ion-header class="ion-no-border header-safe-area">
       <ion-toolbar color="primary">
         <ion-buttons slot="start">
-          <ion-button @click="router.push('/tabs/tab1')">
+          <ion-button @click="router.push('/tabs/tab2')">
             <ion-icon slot="icon-only" :icon="arrowBack"></ion-icon>
           </ion-button>
         </ion-buttons>
-        <ion-title>Mi Boleta</ion-title>
-        
+        <ion-title>Mis Calificaciones</ion-title>
         <ion-buttons slot="end">
           <ion-button @click="abrirHistorial">
             <ion-icon slot="icon-only" :icon="timeOutline"></ion-icon>
@@ -205,6 +204,7 @@ const loadData = async () => {
 
 
 
+
 const calcularPromedioMateria = (notas: any[], periodo: string) => {
   const notasDelPeriodo = notas.filter((n: any) => n.actividad?.periodo === periodo);
   if (notasDelPeriodo.length === 0) return null;
@@ -302,13 +302,13 @@ const getColorNota = (nota: any) => {
 </script>
 
 <style scoped>
-.bg-light { --background: #F4F6F8; }
+.bg-light { --background: var(--ion-background-color); }
 .center-content { display: flex; justify-content: center; margin-top: 50px; }
-.empty-text { color: #999; }
+.empty-text { color: var(--ion-color-medium); }
 
 .student-header { text-align: center; margin-bottom: 15px; }
-.student-header h2 { margin: 0; font-weight: 800; color: #333; }
-.student-header p { margin: 5px 0 0; color: #666; }
+.student-header h2 { margin: 0; font-weight: 800; color: var(--ion-text-color); }
+.student-header p { margin: 5px 0 0; color: var(--ion-color-medium); }
 
 
 .summary-grid {
@@ -318,30 +318,30 @@ const getColorNota = (nota: any) => {
   margin-bottom: 20px;
 }
 .period-card {
-  background: white;
+  background: var(--ion-card-background, white);
   border-radius: 10px;
   padding: 10px 5px;
   text-align: center;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
-.p-label { display: block; font-size: 0.75rem; color: #888; font-weight: 600; text-transform: uppercase; margin-bottom: 4px; }
+.p-label { display: block; font-size: 0.75rem; color: var(--ion-color-medium); font-weight: 600; text-transform: uppercase; margin-bottom: 4px; }
 .p-value { font-size: 1.4rem; font-weight: 800; }
 
 
-.grade-card { margin-bottom: 15px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); background: white; }
-.grade-card ion-card-title { font-size: 1rem; font-weight: 700; color: #444; }
-.periodos-grid { display: flex; justify-content: space-around; background: #FAFAFA; padding: 10px; border-radius: 8px; }
+.grade-card { margin-bottom: 15px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); background: var(--ion-card-background, white); }
+.grade-card ion-card-title { font-size: 1rem; font-weight: 700; color: var(--ion-text-color); }
+.periodos-grid { display: flex; justify-content: space-around; background: var(--ion-item-background, #FAFAFA); padding: 10px; border-radius: 8px; }
 
 .periodo-box { text-align: center; padding: 5px 15px; border-radius: 8px; cursor: pointer; width: 30%; }
 .periodo-box:active { background: #E0E0E0; }
-.periodo-box span { display: block; font-size: 0.8rem; color: #888; margin-bottom: 2px; }
+.periodo-box span { display: block; font-size: 0.8rem; color: var(--ion-color-medium); margin-bottom: 2px; }
 .periodo-box strong { font-size: 1.1rem; }
 
-.materia-promedio { text-align: center; font-size: 0.75rem; color: #BBB; border-top: 1px solid #F0F0F0; padding-top: 8px; margin-top: 8px; }
+.materia-promedio { text-align: center; font-size: 0.75rem; color: var(--ion-color-medium); border-top: 1px solid var(--ion-color-light-shade); padding-top: 8px; margin-top: 8px; }
 
 
-.year-select-container { margin-bottom: 20px; display: flex; align-items: center; gap: 10px; background: white; padding: 10px; border-radius: 10px; }
-.custom-html-select { flex: 1; padding: 8px; border: 1px solid #DDD; border-radius: 6px; font-size: 1rem; background: white; }
+.year-select-container { margin-bottom: 20px; display: flex; align-items: center; gap: 10px; background: var(--ion-card-background, white); padding: 10px; border-radius: 10px; }
+.custom-html-select { flex: 1; padding: 8px; border: 1px solid var(--ion-color-medium); border-radius: 6px; font-size: 1rem; background: var(--ion-item-background, white); color: var(--ion-text-color); }
 
 .general-average-circle {
   width: 140px; height: 140px;

@@ -1,12 +1,12 @@
 <template>
   <ion-page>
-    <ion-header>
+    <ion-header class="ion-no-border header-safe-area">
       <ion-toolbar color="primary">
         <ion-title>{{ pageTitle }}</ion-title>
       </ion-toolbar>
     </ion-header>
 
-    <ion-content class="bg-light ion-padding">
+    <ion-content class="ion-padding bg-light">
       
       <div v-if="loading" class="center-content">
         <ion-spinner color="primary"></ion-spinner>
@@ -18,7 +18,7 @@
             <ion-label>Tus Materias Asignadas</ion-label>
           </ion-list-header>
 
-          <ion-card v-for="carga in items" :key="carga.id" class="course-card" button>
+          <ion-card v-for="carga in items" :key="carga.id" class="course-card" button @click="router.push('/mis-cursos')">
             <ion-card-content>
               <div class="card-flex">
                 <div class="icon-box bg-blue">
@@ -105,7 +105,6 @@ onIonViewWillEnter(() => {
 const loadCargaDocente = async () => {
   loading.value = true;
   try {
-    
     const response = await axios.get(`/cargas?user_id=${authStore.user.id}`);
     items.value = response.data;
   } catch (error) {
@@ -117,14 +116,13 @@ const loadCargaDocente = async () => {
 </script>
 
 <style scoped>
-.bg-light { --background: #F4F6F8; }
+.bg-light { --background: var(--ion-background-color); }
 .custom-list { background: transparent; padding-top: 10px; }
-
-
 .course-card {
   margin-bottom: 10px;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  background: var(--ion-card-background, white);
 }
 .card-flex { display: flex; align-items: center; }
 .icon-box {
@@ -134,9 +132,9 @@ const loadCargaDocente = async () => {
 }
 .bg-blue { background: var(--ion-color-primary); }
 .info-box { flex: 1; }
-.info-box h2 { margin: 0; font-size: 1rem; font-weight: 700; color: #333; }
-.grade-text { margin: 2px 0 0 0; font-size: 0.85rem; color: #666; }
+.info-box h2 { margin: 0; font-size: 1rem; font-weight: 700; color: var(--ion-text-color); }
+.grade-text { margin: 2px 0 0 0; font-size: 0.85rem; color: var(--ion-color-medium); }
 
-.empty-state { text-align: center; margin-top: 50px; color: #999; }
+.empty-state { text-align: center; margin-top: 50px; color: var(--ion-color-medium); }
 .center-content { display: flex; justify-content: center; margin-top: 20px; }
 </style>

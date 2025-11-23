@@ -2,9 +2,9 @@
   <ion-page>
     <ion-header class="ion-no-border header-safe-area">
       <ion-toolbar class="custom-toolbar">
-        <ion-title>Panel de Control</ion-title>
-        <ThemeToggle />
+        <ion-title class="custom-title">Panel de Control</ion-title>
         <ion-buttons slot="end">
+          <ThemeToggle />
           <ion-button @click="logout" aria-label="Cerrar Sesión">
             <ion-icon slot="icon-only" :icon="logOutOutline" class="header-icon"></ion-icon>
           </ion-button>
@@ -133,62 +133,32 @@ import ThemeToggle from '@/components/ThemeToggle.vue';
 const authStore = useAuthStore();
 const router = useRouter();
 
+const logout = () => {
+  authStore.logout();
+  router.replace('/login');
+};
+
+const getUserInitials = () => {
+  return (authStore.user?.name || 'U').charAt(0).toUpperCase();
+};
+
 const roleName = computed(() => {
   const roles: Record<number, string> = { 1: 'Administrador', 2: 'Docente', 3: 'Alumno' };
   return roles[authStore.user?.role_id as number] || 'Usuario';
 });
-
-const isAdmin = computed(() => authStore.user?.role_id === 1);
-const isDocente = computed(() => authStore.user?.role_id === 2);
 
 const getRoleColor = (id: number) => {
   const colors: Record<number, string> = { 1: 'primary', 2: 'success', 3: 'tertiary' };
   return colors[id] || 'medium';
 };
 
-const getUserInitials = () => {
-  const name = authStore.user?.name || 'U';
-  return name.charAt(0).toUpperCase();
-};
-
-const logout = () => {
-  authStore.logout();
-  router.replace('/login');
-};
+const isAdmin = computed(() => authStore.user?.role_id === 1);
+const isDocente = computed(() => authStore.user?.role_id === 2);
 </script>
 
 <style scoped>
-/* =========================================
-   CORRECCIÓN DE ÁREA SEGURA (BARRA DE ESTADO)
-   ========================================= */
-.header-safe-area {
-  /* 1. env(safe-area-inset-top): Estándar moderno para leer el notch/barra.
-     2. 30px: Valor de respaldo (fallback) si el móvil reporta 0.
-  */
-  background: var(--ion-color-primary);
-}
-
-/* Asegura que el toolbar sea transparente para que se vea el fondo del header */
-.custom-toolbar {
-  --background: transparent;
-  --color: white;
-}
-
-.header-icon {
-  color: white;
-}
-
-/* =========================================
-   ESTILOS DEL DASHBOARD (Con soporte Dark Mode)
-   ========================================= */
-
-/* Fondo de la página */
-.dashboard-content { 
-  --background: var(--ion-background-color, var(--ion-color-light)); 
-}
-
+.dashboard-content { --background: var(--ion-background-color); }
 .dashboard-container {
-  padding: 20px;
   padding-top: 20px;
   max-width: 800px;
   margin: 0 auto;

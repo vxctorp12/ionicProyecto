@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <ion-header>
+    <ion-header class="ion-no-border header-safe-area">
       <ion-toolbar color="primary">
         <ion-buttons slot="start">
           <ion-button @click="router.push('/tabs/tab1')">
@@ -28,7 +28,7 @@
             <ion-label>
               <h2>{{ item.materia?.nombre }}</h2>
               <p>Docente: <strong>{{ item.docente?.name }}</strong></p>
-              <p style="font-size: 0.8em; color: #666;">{{ item.materia?.grado?.nombre }}</p>
+              <p style="font-size: 0.8em; color: var(--ion-color-medium);">{{ item.materia?.grado?.nombre }}</p>
             </ion-label>
           </ion-item>
 
@@ -127,11 +127,11 @@ const showToast = async (msg: string, color = 'success') => {
 </script>
 
 <style scoped>
-.bg-light { --background: #F4F6F8; }
+.bg-light { --background: var(--ion-background-color); }
 .custom-list { background: transparent; padding-top: 10px; }
-.user-card { margin-bottom: 10px; border-radius: 12px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; }
+.user-card { margin-bottom: 10px; border-radius: 12px; background: var(--ion-card-background, white); box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; }
 .icon-box { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px; }
 .bg-teal { background: rgba(var(--ion-color-secondary-rgb), 0.15); }
 .center-content { display: flex; justify-content: center; align-items: center; height: 80%; }
-.empty-text { color: #888; }
+.empty-text { color: var(--ion-color-medium); }
 </style>

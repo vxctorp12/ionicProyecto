@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <ion-header>
+    <ion-header class="ion-no-border header-safe-area">
       <ion-toolbar color="primary">
         <ion-buttons slot="start">
           <ion-back-button default-href="/mis-cursos"></ion-back-button>
@@ -204,9 +204,9 @@ const guardarNota = async (alumno: any) => {
 </script>
 
 <style scoped>
-.bg-light { --background: #F4F6F8; }
-.grade-input-wrapper { width: 60px; border: 1px solid #CCC; border-radius: 8px; background: white; }
+.bg-light { --background: var(--ion-background-color); }
+.grade-input-wrapper { width: 60px; border: 1px solid var(--ion-color-medium); border-radius: 8px; background: var(--ion-item-background, white); }
 .grade-input { text-align: center; font-weight: bold; --padding-start: 5px; }
 .sub-header { display: flex; align-items: center; justify-content: space-between; padding-right: 10px; }
-.text-center { text-align: center; margin-top: 20px; color: #666; }
+.text-center { text-align: center; margin-top: 20px; color: var(--ion-color-medium); }
 </style>

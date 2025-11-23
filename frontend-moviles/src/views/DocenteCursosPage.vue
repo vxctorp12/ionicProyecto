@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <ion-header>
+    <ion-header class="ion-no-border header-safe-area">
       <ion-toolbar color="primary">
         <ion-buttons slot="start">
           <ion-button @click="router.push('/tabs/tab1')">
@@ -93,15 +93,15 @@ const irACalificar = (carga: any) => {
 </script>
 
 <style scoped>
-.bg-light { --background: #F4F6F8; }
+.bg-light { --background: var(--ion-background-color); }
 .custom-list { background: transparent; padding-top: 10px; }
-.course-card { margin-bottom: 15px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); background: white; }
+.course-card { margin-bottom: 15px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); background: var(--ion-card-background, white); }
 .card-flex { display: flex; align-items: center; }
 .icon-box { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-right: 15px; }
 .bg-blue { background: var(--ion-color-primary); }
 .info-box { flex: 1; }
-.info-box h2 { margin: 0 0 5px 0; font-size: 1.1rem; font-weight: 700; color: #333; }
-.grade-text { margin: 0; font-size: 0.9rem; color: #666; display: flex; align-items: center; }
+.info-box h2 { margin: 0 0 5px 0; font-size: 1.1rem; font-weight: 700; color: var(--ion-text-color); }
+.grade-text { margin: 0; font-size: 0.9rem; color: var(--ion-color-medium); display: flex; align-items: center; }
 .center-content { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 80%; }
-.empty-text { color: #888; }
+.empty-text { color: var(--ion-color-medium); }
 </style>

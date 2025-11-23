@@ -1,0 +1,78 @@
+﻿[36mvite v5.4.21 [32mbuilding for production...[36m[39m
+transforming...
+[32mÔ£ô[39m 138 modules transformed.
+node.exe : [31mx[39m Build 
+failed in 973ms
+En C:\Users\ferpo\AppData\Roamin
+g\npm\npx.ps1: 24 Carácter: 5
++     & "node$exe"  "$basedir/no
+de_modules/npm/bin/npx-cli.js" 
+$args
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~
+    + CategoryInfo          : N 
+   otSpecified: ([31mx[39m B  
+  uild failed in 973ms:String   
+ ) [], RemoteException
+    + FullyQualifiedErrorId : N 
+   ativeCommandError
+ 
+[31merror during build:
+[31m[vite:vue] [plugin 
+vite:vue] 
+src/views/AlumnosPage.vue 
+(1:7): Invalid end tag.[31m
+file: [36mC:/ionicProyecto/fron
+tend-moviles/src/views/AlumnosPa
+ge.vue:1:7[31m
+SyntaxError: [plugin vite:vue] 
+src/views/AlumnosPage.vue 
+(1:7): Invalid end tag.
+    at createCompilerError (C:\i
+onicProyecto\frontend-moviles\no
+de_modules\@vue\compiler-core\di
+st\compiler-core.cjs.prod.js:136
+0:17)
+    at emitError (C:\ionicProyec
+to\frontend-moviles\node_modules
+\@vue\compiler-core\dist\compile
+r-core.cjs.prod.js:2957:5)
+    at Object.onclosetag (C:\ion
+icProyecto\frontend-moviles\node
+_modules\@vue\compiler-core\dist
+\compiler-core.cjs.prod.js:2356:
+9)
+    at 
+Tokenizer.stateInClosingTagName 
+(C:\ionicProyecto\frontend-movil
+es\node_modules\@vue\compiler-co
+re\dist\compiler-core.cjs.prod.j
+s:785:16)
+    at Tokenizer.parse (C:\ionic
+Proyecto\frontend-moviles\node_m
+odules\@vue\compiler-core\dist\c
+ompiler-core.cjs.prod.js:1143:16
+)
+    at Object.baseParse (C:\ioni
+cProyecto\frontend-moviles\node_
+modules\@vue\compiler-core\dist\
+compiler-core.cjs.prod.js:2989:1
+3)
+    at Object.parse (C:\ionicPro
+yecto\frontend-moviles\node_modu
+les\@vue\compiler-dom\dist\compi
+ler-dom.cjs.prod.js:665:23)
+    at Object.parse$1 [as 
+parse] (C:\ionicProyecto\fronten
+d-moviles\node_modules\@vue\comp
+iler-sfc\dist\compiler-sfc.cjs.j
+s:1801:24)
+    at createDescriptor (file://
+/C:/ionicProyecto/frontend-movil
+es/node_modules/@vitejs/plugin-v
+ue/dist/index.mjs:74:43)
+    at transformMain (file:///C:
+/ionicProyecto/frontend-moviles/
+node_modules/@vitejs/plugin-vue/
+dist/index.mjs:2319:34)[39m

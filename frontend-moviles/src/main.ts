@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import { createPinia } from 'pinia';
 import { IonicVue } from '@ionic/vue';
-import { useThemeStore } from '@/stores/theme'; // Importar aquí arriba es más ordenado
+import { useThemeStore } from '@/stores/theme';
 
 // Core Ionic CSS
 import '@ionic/vue/css/core.css';
@@ -21,9 +21,13 @@ import '@ionic/vue/css/display.css';
 
 // Theme variables
 import './theme/variables.css';
+import './theme/global.css';
 
 // Axios defaults
-axios.defaults.baseURL = 'http://192.168.0.102:8000/api';
+// IMPORTANTE: Cambia esta URL según tu configuración:
+// - Para desarrollo local (backend en la misma PC): 'http://localhost:8000/api'
+// - Para probar desde otra PC en red: 'http://[IP_DEL_SERVIDOR]:8000/api'
+axios.defaults.baseURL = 'http://localhost:8000/api';
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 axios.defaults.headers.common['Accept'] = 'application/json';
 
@@ -40,7 +44,6 @@ const pinia = createPinia();
 app.use(pinia);
 
 // 3. AHORA que Pinia está registrada, inicializamos el ThemeStore
-// Esto ya no dará error porque app.use(pinia) ocurrió arriba
 const themeStore = useThemeStore();
 themeStore.initializeTheme();
 

@@ -1,13 +1,14 @@
 <template>
   <ion-page>
-    <ion-header>
+    <ion-header class="ion-no-border header-safe-area">
       <ion-toolbar color="primary">
         <ion-buttons slot="start">
           <ion-button @click="goBack">
             <ion-icon slot="icon-only" :icon="arrowBack"></ion-icon>
           </ion-button>
         </ion-buttons>
-        <ion-title>Gestión de Alumnos</ion-title> </ion-toolbar>
+        <ion-title>Alumnos</ion-title>
+      </ion-toolbar>
     </ion-header>
 
     <ion-content class="ion-padding bg-light">
@@ -38,9 +39,11 @@
 
         </ion-item-sliding>
       </ion-list>
+      
       <div v-if="!loading && alumnos.length === 0" class="center-content empty-text">
         <p>No hay alumnos aún.</p>
       </div>
+
       <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button @click="createAlumno" color="tertiary">
           <ion-icon :icon="add"></ion-icon>
@@ -75,13 +78,11 @@ onIonViewWillEnter(() => loadAlumnos());
 const loadAlumnos = async () => {
   loading.value = true;
   try {
-    
     const response = await axios.get('/users?role_id=3'); 
     alumnos.value = response.data;
   } catch (error) { console.error(error); } 
   finally { loading.value = false; }
 };
-
 
 const openModal = async (userToEdit: any = null) => {
   const modal = await modalController.create({
@@ -106,20 +107,21 @@ const openModal = async (userToEdit: any = null) => {
     } catch (e) {}
   }
 };
+
 const createAlumno = () => openModal(null);
 const editAlumno = (user: any) => openModal(user);
 const deleteAlumno = async (id: number) => {
-    await axios.delete(`/users/${id}`);
-    loadAlumnos();
+  await axios.delete(`/users/${id}`);
+  loadAlumnos();
 };
 </script>
 
 <style scoped>
-
-.bg-light { --background: #F4F6F8; }
+.bg-light { --background: var(--ion-background-color); }
 .custom-list { background: transparent; padding-top: 10px; }
-.user-card { margin-bottom: 10px; border-radius: 12px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; }
+.user-card { margin-bottom: 10px; border-radius: 12px; background: var(--ion-card-background, white); box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; }
 .avatar-circle { width: 40px; height: 40px; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px; font-size: 16px; }
 .bg-purple { background: var(--ion-color-tertiary); }
 .center-content { display: flex; justify-content: center; align-items: center; height: 80%; }
+.empty-text { color: var(--ion-color-medium); }
 </style>

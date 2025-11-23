@@ -1,0 +1,27 @@
+/* src/theme/global.css */
+
+/* Global Box Sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Safe Area Utility Class */
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Prevent unwanted horizontal scroll globally */
+body {
+  overflow-x: hidden;
+}
+
+/* Global Header Safe Area */
+.header-safe-area {
+  padding-top: env(safe-area-inset-top, 20px);
+  /* Fallback increased to 20px */
+  background: var(--ion-color-primary);
+  min-height: calc(56px + env(safe-area-inset-top, 20px));
+  /* Ensure minimum height */
+}
