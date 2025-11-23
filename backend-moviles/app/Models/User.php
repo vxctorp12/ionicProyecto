@@ -13,7 +13,7 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
-        'role_id', // Asegúrate de que este campo esté aquí
+        'role_id', 
     ];
 
     protected $hidden = [
@@ -30,7 +30,7 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [
-            'role_id' => $this->role_id, // Guardamos el rol en el token para usarlo en el Frontend
+            'role_id' => $this->role_id, 
         ];
     }
 }

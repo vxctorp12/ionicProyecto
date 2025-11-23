@@ -82,21 +82,83 @@ ion-item, ion-card {
 }
 
 /* Modo oscuro */
-@media (prefers-color-scheme: dark) {
-  /* Inviertiendo un poco para que el modo oscuro también se vea bien */
-  body.dark-theme {
-    --ion-color-primary: #5c8cf3; 
-    --ion-color-primary-shade: #517bd9; 
-    --ion-color-primary-tint: #6d98f4; 
+/* Modo oscuro manual */
+body.dark {
+  --ion-color-primary: #5c8cf3; 
+  --ion-color-primary-shade: #517bd9; 
+  --ion-color-primary-tint: #6d98f4; 
 
-    --ion-color-light: #121212; /* Fondo oscuro */
-    --ion-color-light-rgb: 18,18,18;
-    --ion-color-light-contrast: #ffffff;
+  --ion-color-light: #121212; /* Fondo oscuro */
+  --ion-color-light-rgb: 18,18,18;
+  --ion-color-light-contrast: #ffffff;
+  --ion-color-light-contrast-rgb: 255,255,255;
+  --ion-color-light-shade: #1e1e1e;
+  --ion-color-light-tint: #2a2a2a;
 
-    --ion-color-dark: #ffffff; /* Texto claro */
-    --ion-color-dark-rgb: 255,255,255;
-    --ion-color-dark-contrast: #000000;
+  --ion-color-dark: #ffffff; /* Texto claro */
+  --ion-color-dark-rgb: 255,255,255;
+  --ion-color-dark-contrast: #000000;
+  --ion-color-dark-contrast-rgb: 0,0,0;
+  --ion-color-dark-shade: #e0e0e0;
+  --ion-color-dark-tint: #f0f0f0;
 
-    --ion-color-medium: #bbbbbb; /* Texto secundario más claro */
-  }
+  --ion-color-medium: #bbbbbb; /* Texto secundario más claro */
+  --ion-color-medium-rgb: 187,187,187;
+  --ion-color-medium-contrast: #000000;
+  --ion-color-medium-contrast-rgb: 0,0,0;
+  --ion-color-medium-shade: #a4a4a4;
+  --ion-color-medium-tint: #c2c2c2;
+
+  --ion-background-color: #121212;
+  --ion-background-color-rgb: 18,18,18;
+
+  --ion-text-color: #ffffff;
+  --ion-text-color-rgb: 255,255,255;
+
+  --ion-item-background: #1e1e1e;
+  --ion-card-background: #1e1e1e;
+}
+
+/* Ajustes específicos para componentes en modo oscuro */
+body.dark ion-content {
+  --background: #121212;
+}
+
+body.dark ion-card {
+  --background: #1e1e1e;
+  color: #ffffff;
+}
+
+body.dark ion-item {
+  --background: #1e1e1e;
+  --color: #ffffff;
+}
+
+body.dark .welcome-section {
+  background: #1e1e1e;
+  color: #ffffff;
+}
+
+body.dark .greeting {
+  color: #ffffff;
+}
+
+body.dark .menu-card {
+  --background: #1e1e1e;
+}
+
+body.dark .menu-card ion-label {
+  color: #ffffff;
+}
+
+body.dark .text-content h2 {
+  color: #ffffff;
+}
+
+body.dark .text-content p {
+  color: #bbbbbb;
+}
+
+body.dark .info-card h3 {
+  color: #ffffff;
 }

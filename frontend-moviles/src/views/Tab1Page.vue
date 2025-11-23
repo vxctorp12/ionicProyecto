@@ -1,9 +1,9 @@
 <template>
   <ion-page>
-    <ion-header class="ion-no-border">
+    <ion-header class="ion-no-border header-safe-area">
       <ion-toolbar color="primary">
         <ion-title>Panel de Control</ion-title>
-        
+        <ThemeToggle />
         <ion-buttons slot="end">
           <ion-button @click="logout" aria-label="Cerrar Sesión">
             <ion-icon slot="icon-only" :icon="logOutOutline"></ion-icon>
@@ -13,9 +13,7 @@
     </ion-header>
 
     <ion-content :fullscreen="true" class="dashboard-content">
-      
       <div class="dashboard-container">
-        
         <div class="welcome-section ion-padding-bottom">
           <div class="user-info">
             <div class="avatar-circle">
@@ -88,12 +86,9 @@
 
         <div v-else-if="isDocente" class="docente-menu">
           <h2 class="section-title">Panel Docente</h2>
-          
           <ion-card button @click="router.push('/mis-cursos')" class="menu-card big-card">
             <ion-card-content class="horizontal-content">
-              <div class="icon-box primary-light big-icon">
-                <ion-icon :icon="easel" color="primary"></ion-icon>
-              </div>
+              <div class="icon-box primary-light big-icon"><ion-icon :icon="easel" color="primary"></ion-icon></div>
               <div class="text-content">
                 <h2>Mis Cursos y Notas</h2>
                 <p>Accede a tus materias asignadas y califica a tus alumnos.</p>
@@ -101,29 +96,20 @@
               <ion-icon :icon="chevronForward" color="medium"></ion-icon>
             </ion-card-content>
           </ion-card>
-
-          </div>
+        </div>
 
         <div v-else class="student-view">
           <ion-card button @click="router.push('/mis-notas')" class="menu-card big-card">
-            
             <ion-card-content class="horizontal-content">
-              
-              <div class="icon-box primary-light big-icon">
-                <ion-icon :icon="statsChart" color="primary"></ion-icon>
-              </div>
-              
+              <div class="icon-box primary-light big-icon"><ion-icon :icon="statsChart" color="primary"></ion-icon></div>
               <div class="text-content">
                 <h2>Ver Mis Calificaciones</h2>
                 <p>Consulta tu promedio y notas por periodo.</p>
               </div>
-              
               <ion-icon :icon="chevronForward" color="medium"></ion-icon>
-              
             </ion-card-content>
           </ion-card>
         </div>
-
       </div>
     </ion-content>
   </ion-page>
@@ -133,15 +119,16 @@
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
-import { 
-  school, people, library, layers, logOutOutline, statsChart, card, briefcase, 
-  easel, chevronForward 
+import {
+  school, people, library, layers, logOutOutline, statsChart, card, briefcase,
+  easel, chevronForward
 } from 'ionicons/icons';
-import { 
-  IonPage, IonHeader, IonToolbar, IonTitle, IonContent, 
+import {
+  IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonCard, IonCardContent, IonGrid, IonRow, IonCol, IonIcon, IonLabel,
-  IonButtons, IonButton, IonBadge 
+  IonButtons, IonButton, IonBadge
 } from '@ionic/vue';
+import ThemeToggle from '@/components/ThemeToggle.vue';
 
 const authStore = useAuthStore();
 const router = useRouter();
@@ -151,9 +138,8 @@ const roleName = computed(() => {
   return roles[authStore.user?.role_id as number] || 'Usuario';
 });
 
-// Computed para detectar roles
 const isAdmin = computed(() => authStore.user?.role_id === 1);
-const isDocente = computed(() => authStore.user?.role_id === 2); // <--- ESTO FALTABA
+const isDocente = computed(() => authStore.user?.role_id === 2);
 
 const getRoleColor = (id: number) => {
   const colors: Record<number, string> = { 1: 'primary', 2: 'success', 3: 'tertiary' };
@@ -172,9 +158,18 @@ const logout = () => {
 </script>
 
 <style scoped>
-.dashboard-content { --background: var(--ion-color-light); }
-.dashboard-container { padding: 20px; max-width: 800px; margin: 0 auto; }
+.header-safe-area {
+  padding-top: var(--ion-safe-area-top);
+  background: var(--ion-color-primary);
+}
 
+.dashboard-content { --background: var(--ion-color-light); }
+.dashboard-container {
+  padding: 20px;
+  padding-top: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
 
 .welcome-section { background: white; border-radius: 16px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 25px; }
 .user-info { display: flex; align-items: center; gap: 15px; }
@@ -183,26 +178,40 @@ const logout = () => {
 .greeting { margin: 0; font-size: 1.2rem; font-weight: 700; color: var(--ion-color-dark); }
 .role-badge { margin-top: 5px; padding: 5px 10px; border-radius: 6px; }
 
-
 .section-title { font-size: 1.1rem; font-weight: 600; color: var(--ion-color-medium); margin-bottom: 15px; margin-left: 5px; }
-.menu-card { margin: 5px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); --background: white; transition: transform 0.1s; }
+.menu-card {
+  margin: 5px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  --background: white;
+  transition: transform 0.1s;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .menu-card:active { transform: scale(0.98); }
 
+.card-content-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px !important;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+.menu-card ion-label { font-weight: 600; color: var(--ion-color-dark); font-size: 0.9rem; margin-top: 10px; }
 
-.card-content-centered { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px !important; text-align: center; }
-.menu-card ion-label { font-weight: 600; color: var(--ion-color-dark); font-size: 0.95rem; margin-top: 10px; }
-
-
-.big-card { margin-bottom: 20px; }
+.big-card { margin-bottom: 20px; aspect-ratio: auto; display: block; }
 .horizontal-content { display: flex; align-items: center; padding: 20px !important; }
 .text-content { flex: 1; margin-left: 15px; }
 .text-content h2 { margin: 0; font-size: 1.1rem; font-weight: 700; color: var(--ion-color-dark); }
 .text-content p { margin: 5px 0 0 0; color: var(--ion-color-medium); font-size: 0.9rem; }
 
-
 .icon-box { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 0; font-size: 24px; }
 .big-icon { width: 60px; height: 60px; font-size: 30px; }
-
 
 .primary-light { background: rgba(var(--ion-color-primary-rgb), 0.1); }
 .secondary-light { background: rgba(var(--ion-color-secondary-rgb), 0.1); }
@@ -210,8 +219,4 @@ const logout = () => {
 .warning-light { background: rgba(var(--ion-color-warning-rgb), 0.1); }
 .orange-light { background: #FFF3E0; color: #FF9800; }
 .teal-light { background: rgba(var(--ion-color-secondary-rgb), 0.15); }
-
-
-.info-card { text-align: center; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-.info-card h3 { margin-top: 10px; font-weight: bold; color: var(--ion-color-dark); }
 </style>
