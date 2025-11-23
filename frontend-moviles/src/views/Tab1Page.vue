@@ -1,12 +1,12 @@
 <template>
   <ion-page>
     <ion-header class="ion-no-border header-safe-area">
-      <ion-toolbar color="primary">
+      <ion-toolbar class="custom-toolbar">
         <ion-title>Panel de Control</ion-title>
         <ThemeToggle />
         <ion-buttons slot="end">
           <ion-button @click="logout" aria-label="Cerrar Sesión">
-            <ion-icon slot="icon-only" :icon="logOutOutline"></ion-icon>
+            <ion-icon slot="icon-only" :icon="logOutOutline" class="header-icon"></ion-icon>
           </ion-button>
         </ion-buttons>
       </ion-toolbar>
@@ -158,12 +158,35 @@ const logout = () => {
 </script>
 
 <style scoped>
+/* =========================================
+   CORRECCIÓN DE ÁREA SEGURA (BARRA DE ESTADO)
+   ========================================= */
 .header-safe-area {
-  padding-top: var(--ion-safe-area-top);
+  /* 1. env(safe-area-inset-top): Estándar moderno para leer el notch/barra.
+     2. 30px: Valor de respaldo (fallback) si el móvil reporta 0.
+  */
   background: var(--ion-color-primary);
 }
 
-.dashboard-content { --background: var(--ion-color-light); }
+/* Asegura que el toolbar sea transparente para que se vea el fondo del header */
+.custom-toolbar {
+  --background: transparent;
+  --color: white;
+}
+
+.header-icon {
+  color: white;
+}
+
+/* =========================================
+   ESTILOS DEL DASHBOARD (Con soporte Dark Mode)
+   ========================================= */
+
+/* Fondo de la página */
+.dashboard-content { 
+  --background: var(--ion-background-color, var(--ion-color-light)); 
+}
+
 .dashboard-container {
   padding: 20px;
   padding-top: 20px;
@@ -171,19 +194,54 @@ const logout = () => {
   margin: 0 auto;
 }
 
-.welcome-section { background: white; border-radius: 16px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 25px; }
+/* Welcome Section (Tarjeta de Bienvenida) */
+.welcome-section { 
+  /* CAMBIO: Usamos variable para que se ponga oscura en Dark Mode */
+  background: var(--ion-card-background, white); 
+  
+  border-radius: 16px; 
+  padding: 20px; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+  margin-bottom: 25px; 
+}
+
 .user-info { display: flex; align-items: center; gap: 15px; }
-.avatar-circle { width: 50px; height: 50px; background: var(--ion-color-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; }
+
+.avatar-circle { 
+  width: 50px; height: 50px; 
+  background: var(--ion-color-primary); 
+  color: white; 
+  border-radius: 50%; 
+  display: flex; align-items: center; justify-content: center; 
+  font-weight: bold; font-size: 1.2rem; 
+}
+
 .text-info { display: flex; flex-direction: column; align-items: flex-start; }
-.greeting { margin: 0; font-size: 1.2rem; font-weight: 700; color: var(--ion-color-dark); }
+
+.greeting { 
+  margin: 0; font-size: 1.2rem; font-weight: 700; 
+  /* CAMBIO: Texto dinámico (negro en light, blanco en dark) */
+  color: var(--ion-text-color, var(--ion-color-dark)); 
+}
+
 .role-badge { margin-top: 5px; padding: 5px 10px; border-radius: 6px; }
 
-.section-title { font-size: 1.1rem; font-weight: 600; color: var(--ion-color-medium); margin-bottom: 15px; margin-left: 5px; }
+.section-title { 
+  font-size: 1.1rem; font-weight: 600; 
+  color: var(--ion-color-medium); 
+  margin-bottom: 15px; margin-left: 5px; 
+}
+
+/* Tarjetas de Menú */
 .menu-card {
   margin: 5px;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  --background: white;
+  
+  /* CAMBIO: Fondo dinámico para Dark Mode */
+  --background: var(--ion-card-background, white); 
+  background: var(--ion-card-background, white);
+  
   transition: transform 0.1s;
   aspect-ratio: 1;
   display: flex;
@@ -202,21 +260,46 @@ const logout = () => {
   height: 100%;
   width: 100%;
 }
-.menu-card ion-label { font-weight: 600; color: var(--ion-color-dark); font-size: 0.9rem; margin-top: 10px; }
+
+.menu-card ion-label { 
+  font-weight: 600; 
+  /* CAMBIO: Texto dinámico */
+  color: var(--ion-text-color, var(--ion-color-dark)); 
+  font-size: 0.9rem; 
+  margin-top: 10px; 
+}
 
 .big-card { margin-bottom: 20px; aspect-ratio: auto; display: block; }
 .horizontal-content { display: flex; align-items: center; padding: 20px !important; }
 .text-content { flex: 1; margin-left: 15px; }
-.text-content h2 { margin: 0; font-size: 1.1rem; font-weight: 700; color: var(--ion-color-dark); }
+
+.text-content h2 { 
+  margin: 0; font-size: 1.1rem; font-weight: 700; 
+  /* CAMBIO: Texto dinámico */
+  color: var(--ion-text-color, var(--ion-color-dark)); 
+}
+
 .text-content p { margin: 5px 0 0 0; color: var(--ion-color-medium); font-size: 0.9rem; }
 
-.icon-box { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 0; font-size: 24px; }
+.icon-box { 
+  width: 50px; height: 50px; 
+  border-radius: 12px; 
+  display: flex; align-items: center; justify-content: center; 
+  margin-bottom: 0; font-size: 24px; 
+}
 .big-icon { width: 60px; height: 60px; font-size: 30px; }
 
+/* Fondos claros para iconos (se mantienen igual, funcionan bien en ambos modos) */
 .primary-light { background: rgba(var(--ion-color-primary-rgb), 0.1); }
 .secondary-light { background: rgba(var(--ion-color-secondary-rgb), 0.1); }
 .tertiary-light { background: rgba(var(--ion-color-tertiary-rgb), 0.1); }
 .warning-light { background: rgba(var(--ion-color-warning-rgb), 0.1); }
 .orange-light { background: #FFF3E0; color: #FF9800; }
 .teal-light { background: rgba(var(--ion-color-secondary-rgb), 0.15); }
+
+/* Ajuste específico para el icono naranja en modo oscuro */
+:host-context(body.dark) .orange-light {
+  background: rgba(255, 152, 0, 0.2); /* Más suave en modo oscuro */
+  color: #ffb74d;
+}
 </style>

@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import { createPinia } from 'pinia';
 import { IonicVue } from '@ionic/vue';
+import { useThemeStore } from '@/stores/theme'; // Importar aquí arriba es más ordenado
 
 // Core Ionic CSS
 import '@ionic/vue/css/core.css';
@@ -31,18 +32,23 @@ if (token) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 }
 
-const pinia = createPinia();
+// 1. Creamos la instancia de la App
+const app = createApp(App);
 
-// Initialize theme store
-import { useThemeStore } from '@/stores/theme';
+// 2. Creamos Pinia y la registramos INMEDIATAMENTE
+const pinia = createPinia();
+app.use(pinia);
+
+// 3. AHORA que Pinia está registrada, inicializamos el ThemeStore
+// Esto ya no dará error porque app.use(pinia) ocurrió arriba
 const themeStore = useThemeStore();
 themeStore.initializeTheme();
 
-const app = createApp(App)
-  .use(IonicVue)
-  .use(pinia)
-  .use(router);
+// 4. Registramos el resto de plugins
+app.use(IonicVue);
+app.use(router);
 
+// 5. Montamos la app
 router.isReady().then(() => {
   app.mount('#app');
 });

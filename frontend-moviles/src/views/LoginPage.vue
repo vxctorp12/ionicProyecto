@@ -1,8 +1,10 @@
 <template>
   <ion-page>
-    <ion-content class="login-bg">
+    <ion-content class="login-content" :fullscreen="true">
       <ThemeToggle />
-      <div class="login-container">
+      
+      <div class="login-container safe-area-top">
+        
         <ion-card class="login-card">
           <ion-card-content class="ion-padding">
             <div class="logo-container">
@@ -12,6 +14,7 @@
               <h1 class="title">Portal Estudiantil</h1>
               <p class="subtitle">Bienvenido de nuevo</p>
             </div>
+            
             <form @submit.prevent="handleLogin">
               <div class="input-group">
                 <label class="input-label">Correo Institucional</label>
@@ -26,6 +29,7 @@
                   ></ion-input>
                 </div>
               </div>
+              
               <div class="input-group">
                 <label class="input-label">Contraseña</label>
                 <div class="input-wrapper">
@@ -44,9 +48,11 @@
                   ></ion-icon>
                 </div>
               </div>
+              
               <div class="forgot-pass">
                 <a href="#">¿Olvidaste tu contraseña?</a>
               </div>
+              
               <ion-button expand="block" type="submit" class="login-btn" :disabled="isLoading">
                 <span v-if="!isLoading">INGRESAR</span>
                 <ion-spinner v-else name="crescent"></ion-spinner>
@@ -54,6 +60,7 @@
             </form>
           </ion-card-content>
         </ion-card>
+        
       </div>
     </ion-content>
   </ion-page>
@@ -113,21 +120,108 @@ const handleLogin = async () => {
 </script>
 
 <style scoped>
-.login-bg { --background: #F4F6F8; }
-.login-container { display: flex; justify-content: center; align-items: center; height: 100%; padding: 20px; }
-.login-card { width: 100%; max-width: 400px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); background: white; overflow: visible; }
+/* --- 1. Fondo y Layout --- */
+.login-content {
+  /* Usa el fondo global (#F7F7F7 en light, #121212 en dark) */
+  --background: var(--ion-background-color);
+}
+
+.login-container { 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  height: 100%; 
+  padding: 20px;
+}
+
+
+
+/* --- 2. Tarjeta (Card) --- */
+.login-card { 
+  width: 100%; 
+  max-width: 400px; 
+  border-radius: 16px; 
+  /* FONDO DINÁMICO: Blanco en light, #1e1e1e en dark */
+  background: var(--ion-card-background, white); 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+  overflow: visible; 
+}
+
+/* --- 3. Elementos Visuales --- */
 .logo-container { text-align: center; margin-bottom: 30px; display: flex; flex-direction: column; align-items: center; }
-.logo-box { background-color: var(--ion-color-primary); width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; font-size: 32px; box-shadow: 0 4px 10px rgba(42,103,241,0.3); }
-.title { font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 0; }
-.subtitle { font-size: 14px; color: #888; margin-top: 5px; }
+
+.logo-box { 
+  background-color: var(--ion-color-primary); 
+  width: 60px; height: 60px; 
+  border-radius: 12px; 
+  display: flex; align-items: center; justify-content: center; 
+  margin-bottom: 15px; font-size: 32px; 
+  box-shadow: 0 4px 10px rgba(42,103,241,0.3); 
+}
+
+.title { 
+  font-size: 22px; font-weight: 700; margin: 0;
+  /* TEXTO DINÁMICO: Negro en light, Blanco en dark */
+  color: var(--ion-text-color, #1a1a1a);
+}
+
+.subtitle { 
+  font-size: 14px; margin-top: 5px; 
+  color: var(--ion-color-medium);
+}
+
+/* --- 4. Inputs --- */
 .input-group { margin-bottom: 20px; text-align: left; }
-.input-label { display: block; font-size: 13px; font-weight: 600; color: #333; margin-bottom: 8px; }
-.input-wrapper { display: flex; align-items: center; border: 1px solid #E0E0E0; border-radius: 8px; background: #FFFFFF; padding: 0 12px; transition: all 0.3s cubic-bezier(0.25,0.8,0.25,1); }
-.input-wrapper:focus-within { border-color: var(--ion-color-primary); box-shadow: 0 0 0 4px rgba(var(--ion-color-primary-rgb),0.15); }
-.input-icon { color: #999; font-size: 20px; margin-right: 10px; transition: color 0.3s; }
+
+.input-label { 
+  display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px; 
+  color: var(--ion-text-color, #333); /* Etiqueta dinámica */
+}
+
+.input-wrapper { 
+  display: flex; align-items: center; 
+  border: 1px solid var(--ion-color-medium-shade); /* Borde sutil basado en el tema */
+  border-radius: 8px; 
+  padding: 0 12px; 
+  transition: all 0.3s cubic-bezier(0.25,0.8,0.25,1);
+  
+  /* FONDO INPUT: Se adapta al modo oscuro (#1e1e1e o similar) */
+  background: var(--ion-item-background, #fff); 
+}
+
+/* Ajuste manual para modo claro: borde gris suave */
+:host-context(body:not(.dark)) .input-wrapper {
+    border-color: #E0E0E0;
+}
+
+.input-wrapper:focus-within { 
+  border-color: var(--ion-color-primary); 
+  box-shadow: 0 0 0 4px rgba(var(--ion-color-primary-rgb),0.15); 
+}
+
+.input-icon { 
+  font-size: 20px; margin-right: 10px; transition: color 0.3s;
+  color: var(--ion-color-medium); 
+}
 .input-wrapper:focus-within .input-icon { color: var(--ion-color-primary); }
-.custom-input { --padding-start:0; --padding-end:0; --background:transparent; height:45px; font-size:14px; --highlight-height:0; --highlight-color-focused:transparent; --color:#1A1A1A !important; --placeholder-color:#A0A0A0 !important; --placeholder-opacity:1; }
-.eye-icon { color:#999; font-size:20px; cursor:pointer; }
+
+.custom-input { 
+  --padding-start:0; --padding-end:0; --background:transparent; 
+  height:45px; font-size:14px; 
+  --highlight-height:0; --highlight-color-focused:transparent; 
+  
+  /* TEXTO INPUT: Blanco en dark, negro en light */
+  --color: var(--ion-text-color) !important; 
+  --placeholder-color: var(--ion-color-medium) !important; 
+  --placeholder-opacity: 0.7; 
+}
+
+.eye-icon { 
+  font-size:20px; cursor:pointer; 
+  color: var(--ion-color-medium);
+}
+
+/* --- 5. Otros --- */
 .forgot-pass { text-align:right; margin-bottom:25px; }
 .forgot-pass a { font-size:13px; color:var(--ion-color-primary); text-decoration:none; font-weight:600; }
 .login-btn { --border-radius:8px; font-weight:700; height:48px; --box-shadow:0 4px 12px rgba(42,103,241,0.3); }
