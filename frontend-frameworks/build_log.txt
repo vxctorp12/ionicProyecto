@@ -1,0 +1,354 @@
+
+> frontend-frameworks@0.1.0 build
+> vue-cli-service build
+
+All browser targets in the browserslist configuration have supported ES module.
+Therefore we don't build two separate bundles for differential loading.
+
+
+-  Building for production...
+ WARNING  Compiled with 20 warnings11:08:31 p. m.
+
+ warning  
+
+chunk 16 [mini-css-extract-plugin]
+Conflicting order. Following module has been added:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VSlideGroup/VSlideGroup.css
+despite it was not able to fulfill desired ordering with these modules:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VDivider/VDivider.css
+   - couldn't fulfill desired order of chunk group(s) , 
+   - while fulfilling desired order of chunk group(s) , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VList/VListItem.css
+   - couldn't fulfill desired order of chunk group(s) , 
+   - while fulfilling desired order of chunk group(s) , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VList/VList.css
+   - couldn't fulfill desired order of chunk group(s) , 
+   - while fulfilling desired order of chunk group(s) , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VDialog/VDialog.css
+   - couldn't fulfill desired order of chunk group(s) , 
+   - while fulfilling desired order of chunk group(s) , , , , , 
+
+ warning  
+
+chunk 16 [mini-css-extract-plugin]
+Conflicting order. Following module has been added:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VDivider/VDivider.css
+despite it was not able to fulfill desired ordering with these modules:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VList/VListItem.css
+   - couldn't fulfill desired order of chunk group(s) , 
+   - while fulfilling desired order of chunk group(s) , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VList/VList.css
+   - couldn't fulfill desired order of chunk group(s) , 
+   - while fulfilling desired order of chunk group(s) , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VDialog/VDialog.css
+   - couldn't fulfill desired order of chunk group(s) , 
+   - while fulfilling desired order of chunk group(s) , , , , , 
+
+ warning  
+
+chunk 16 [mini-css-extract-plugin]
+Conflicting order. Following module has been added:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VList/VList.css
+despite it was not able to fulfill desired ordering with these modules:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VDialog/VDialog.css
+   - couldn't fulfill desired order of chunk group(s) , 
+   - while fulfilling desired order of chunk group(s) , , , , , 
+
+ warning  
+
+chunk 16 [mini-css-extract-plugin]
+Conflicting order. Following module has been added:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VList/VListItem.css
+despite it was not able to fulfill desired ordering with these modules:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VDialog/VDialog.css
+   - couldn't fulfill desired order of chunk group(s) , 
+   - while fulfilling desired order of chunk group(s) , , , , , 
+
+ warning  
+
+chunk 130 [mini-css-extract-plugin]
+Conflicting order. Following module has been added:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VBtn/VBtn.css
+despite it was not able to fulfill desired ordering with these modules:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/directives/ripple/VRipple.css
+   - couldn't fulfill desired order of chunk group(s) 
+   - while fulfilling desired order of chunk group(s) , , , , , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VProgressLinear/VProgressLinear.css
+   - couldn't fulfill desired order of chunk group(s) 
+   - while fulfilling desired order of chunk group(s) , , , , , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VCard/VCard.css
+   - couldn't fulfill desired order of chunk group(s) 
+   - while fulfilling desired order of chunk group(s) , , , , , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VResponsive/VResponsive.css
+   - couldn't fulfill desired order of chunk group(s) , , , 
+   - while fulfilling desired order of chunk group(s) , , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VImg/VImg.css
+   - couldn't fulfill desired order of chunk group(s) , , , 
+   - while fulfilling desired order of chunk group(s) , , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VIcon/VIcon.css
+   - couldn't fulfill desired order of chunk group(s) , , , 
+   - while fulfilling desired order of chunk group(s) , , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VAvatar/VAvatar.css
+   - couldn't fulfill desired order of chunk group(s) , , , 
+   - while fulfilling desired order of chunk group(s) , , , , , , 
+
+ warning  
+
+chunk 130 [mini-css-extract-plugin]
+Conflicting order. Following module has been added:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VBtnToggle/VBtnToggle.css
+despite it was not able to fulfill desired ordering with these modules:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/directives/ripple/VRipple.css
+   - couldn't fulfill desired order of chunk group(s) 
+   - while fulfilling desired order of chunk group(s) , , , , , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VProgressLinear/VProgressLinear.css
+   - couldn't fulfill desired order of chunk group(s) 
+   - while fulfilling desired order of chunk group(s) , , , , , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VCard/VCard.css
+   - couldn't fulfill desired order of chunk group(s) 
+   - while fulfilling desired order of chunk group(s) , , , , , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VResponsive/VResponsive.css
+   - couldn't fulfill desired order of chunk group(s) , , , 
+   - while fulfilling desired order of chunk group(s) , , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VImg/VImg.css
+   - couldn't fulfill desired order of chunk group(s) , , , 
+   - while fulfilling desired order of chunk group(s) , , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VIcon/VIcon.css
+   - couldn't fulfill desired order of chunk group(s) , , , 
+   - while fulfilling desired order of chunk group(s) , , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VAvatar/VAvatar.css
+   - couldn't fulfill desired order of chunk group(s) , , , 
+   - while fulfilling desired order of chunk group(s) , , , , , , 
+
+ warning  
+
+chunk 130 [mini-css-extract-plugin]
+Conflicting order. Following module has been added:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VAvatar/VAvatar.css
+despite it was not able to fulfill desired ordering with these modules:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VCard/VCard.css
+   - couldn't fulfill desired order of chunk group(s) , , , , , , 
+   - while fulfilling desired order of chunk group(s) , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/directives/ripple/VRipple.css
+   - couldn't fulfill desired order of chunk group(s) , , , , , , 
+   - while fulfilling desired order of chunk group(s) , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VProgressLinear/VProgressLinear.css
+   - couldn't fulfill desired order of chunk group(s) , , , , , , 
+   - while fulfilling desired order of chunk group(s) , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VProgressCircular/VProgressCircular.css
+   - couldn't fulfill desired order of chunk group(s) , , , , , , 
+   - while fulfilling desired order of chunk group(s) , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VIcon/VIcon.css
+   - couldn't fulfill desired order of chunk group(s) , , , , , , 
+   - while fulfilling desired order of chunk group(s) , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VBtnGroup/VBtnGroup.css
+   - couldn't fulfill desired order of chunk group(s) , , , , , , 
+   - while fulfilling desired order of chunk group(s) , , , 
+
+ warning  
+
+chunk 130 [mini-css-extract-plugin]
+Conflicting order. Following module has been added:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VIcon/VIcon.css
+despite it was not able to fulfill desired ordering with these modules:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VBtnGroup/VBtnGroup.css
+   - couldn't fulfill desired order of chunk group(s) , , , , , , 
+   - while fulfilling desired order of chunk group(s) , , , 
+
+ warning  
+
+chunk 130 [mini-css-extract-plugin]
+Conflicting order. Following module has been added:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VBtnGroup/VBtnGroup.css
+despite it was not able to fulfill desired ordering with these modules:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/directives/ripple/VRipple.css
+   - couldn't fulfill desired order of chunk group(s) 
+   - while fulfilling desired order of chunk group(s) , , , , , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VProgressLinear/VProgressLinear.css
+   - couldn't fulfill desired order of chunk group(s) 
+   - while fulfilling desired order of chunk group(s) , , , , , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VCard/VCard.css
+   - couldn't fulfill desired order of chunk group(s) 
+   - while fulfilling desired order of chunk group(s) , , , , , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VResponsive/VResponsive.css
+   - couldn't fulfill desired order of chunk group(s) , , , 
+   - while fulfilling desired order of chunk group(s) , , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VImg/VImg.css
+   - couldn't fulfill desired order of chunk group(s) , , , 
+   - while fulfilling desired order of chunk group(s) , , , , , , 
+
+ warning  
+
+chunk 130 [mini-css-extract-plugin]
+Conflicting order. Following module has been added:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VImg/VImg.css
+despite it was not able to fulfill desired ordering with these modules:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VCard/VCard.css
+   - couldn't fulfill desired order of chunk group(s) , , , , , , 
+   - while fulfilling desired order of chunk group(s) , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/directives/ripple/VRipple.css
+   - couldn't fulfill desired order of chunk group(s) , , , , , , 
+   - while fulfilling desired order of chunk group(s) , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VProgressLinear/VProgressLinear.css
+   - couldn't fulfill desired order of chunk group(s) , , , , , , 
+   - while fulfilling desired order of chunk group(s) , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VProgressCircular/VProgressCircular.css
+   - couldn't fulfill desired order of chunk group(s) , , , , , , 
+   - while fulfilling desired order of chunk group(s) , , , 
+
+ warning  
+
+chunk 130 [mini-css-extract-plugin]
+Conflicting order. Following module has been added:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VProgressCircular/VProgressCircular.css
+despite it was not able to fulfill desired ordering with these modules:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/directives/ripple/VRipple.css
+   - couldn't fulfill desired order of chunk group(s) 
+   - while fulfilling desired order of chunk group(s) , , , , , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VProgressLinear/VProgressLinear.css
+   - couldn't fulfill desired order of chunk group(s) 
+   - while fulfilling desired order of chunk group(s) , , , , , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VCard/VCard.css
+   - couldn't fulfill desired order of chunk group(s) 
+   - while fulfilling desired order of chunk group(s) , , , , , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VResponsive/VResponsive.css
+   - couldn't fulfill desired order of chunk group(s) , , , 
+   - while fulfilling desired order of chunk group(s) , , , , , , 
+
+ warning  
+
+chunk 130 [mini-css-extract-plugin]
+Conflicting order. Following module has been added:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VProgressLinear/VProgressLinear.css
+despite it was not able to fulfill desired ordering with these modules:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VCard/VCard.css
+   - couldn't fulfill desired order of chunk group(s) 
+   - while fulfilling desired order of chunk group(s) , , , , , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VResponsive/VResponsive.css
+   - couldn't fulfill desired order of chunk group(s) , , , 
+   - while fulfilling desired order of chunk group(s) , , , , , , 
+
+ warning  
+
+chunk 130 [mini-css-extract-plugin]
+Conflicting order. Following module has been added:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/directives/ripple/VRipple.css
+despite it was not able to fulfill desired ordering with these modules:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VCard/VCard.css
+   - couldn't fulfill desired order of chunk group(s) 
+   - while fulfilling desired order of chunk group(s) , , , , , , , , , 
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VResponsive/VResponsive.css
+   - couldn't fulfill desired order of chunk group(s) , , , 
+   - while fulfilling desired order of chunk group(s) , , , , , , 
+
+ warning  
+
+chunk 130 [mini-css-extract-plugin]
+Conflicting order. Following module has been added:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VCard/VCard.css
+despite it was not able to fulfill desired ordering with these modules:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VResponsive/VResponsive.css
+   - couldn't fulfill desired order of chunk group(s) , , , 
+   - while fulfilling desired order of chunk group(s) , , , , , , 
+
+ warning  
+
+chunk 140 [mini-css-extract-plugin]
+Conflicting order. Following module has been added:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VOverlay/VOverlay.css
+despite it was not able to fulfill desired ordering with these modules:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VLabel/VLabel.css
+   - couldn't fulfill desired order of chunk group(s) , , , , , 
+   - while fulfilling desired order of chunk group(s) , , , 
+
+ warning  
+
+chunk 140 [mini-css-extract-plugin]
+Conflicting order. Following module has been added:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VTextField/VTextField.css
+despite it was not able to fulfill desired ordering with these modules:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VLabel/VLabel.css
+   - couldn't fulfill desired order of chunk group(s) , , , , , , 
+   - while fulfilling desired order of chunk group(s) , , 
+
+ warning  
+
+chunk 140 [mini-css-extract-plugin]
+Conflicting order. Following module has been added:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VCounter/VCounter.css
+despite it was not able to fulfill desired ordering with these modules:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VLabel/VLabel.css
+   - couldn't fulfill desired order of chunk group(s) , , , , , , 
+   - while fulfilling desired order of chunk group(s) , , 
+
+ warning  
+
+chunk 140 [mini-css-extract-plugin]
+Conflicting order. Following module has been added:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VField/VField.css
+despite it was not able to fulfill desired ordering with these modules:
+ * css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-14.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-14.use[2]!./node_modules/vuetify/lib/components/VLabel/VLabel.css
+   - couldn't fulfill desired order of chunk group(s) , , , , , , 
+   - while fulfilling desired order of chunk group(s) , , 
+
+ warning  
+
+asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.
+Assets: 
+  fonts/materialdesignicons-webfont.5d875350.eot (1000 KiB)
+  fonts/materialdesignicons-webfont.21f691f0.ttf (1000 KiB)
+  fonts/materialdesignicons-webfont.54b0f60d.woff2 (318 KiB)
+  fonts/materialdesignicons-webfont.d671cbf6.woff (454 KiB)
+  css/chunk-vendors.33b59611.css (505 KiB)
+  js/chunk-vendors.c3af0d88.js (261 KiB)
+
+ warning  
+
+entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+Entrypoints:
+  app (775 KiB)
+      css/chunk-vendors.33b59611.css
+      js/chunk-vendors.c3af0d88.js
+      js/app.14915547.js
+
+
+  File                                   Size              Gzipped
+
+  dist\js\chunk-vendors.c3af0d88.js      261.22 KiB        97.22 KiB
+  dist\js\130.cb890c61.js                53.91 KiB         16.26 KiB
+  dist\js\140.9f48fe50.js                48.67 KiB         15.59 KiB
+  dist\js\423.c4b5b5a1.js                43.98 KiB         13.92 KiB
+  dist\js\16.486cb448.js                 29.40 KiB         9.02 KiB
+  dist\js\606.f9f56562.js                28.58 KiB         9.64 KiB
+  dist\js\422.4a9da4af.js                22.96 KiB         8.08 KiB
+  dist\js\515.0e06cbc5.js                17.06 KiB         6.14 KiB
+  dist\js\83.e1830db3.js                 12.14 KiB         4.64 KiB
+  dist\js\webfontloader.a9e5d7ff.js      12.02 KiB         4.83 KiB
+  dist\js\617.6be4689a.js                9.39 KiB          2.72 KiB
+  dist\js\app.14915547.js                9.29 KiB          3.81 KiB
+  dist\js\371.c4891088.js                7.27 KiB          3.20 KiB
+  dist\js\473.0236746d.js                6.26 KiB          2.40 KiB
+  dist\js\758.dfcec3eb.js                5.98 KiB          1.98 KiB
+  dist\js\686.966ac46e.js                5.68 KiB          1.90 KiB
+  dist\js\812.ebca57c0.js                5.67 KiB          1.90 KiB
+  dist\js\59.b15ad997.js                 5.67 KiB          1.89 KiB
+  dist\js\369.acdf6cb3.js                5.57 KiB          1.86 KiB
+  dist\js\77.24695906.js                 4.84 KiB          1.66 KiB
+  dist\css\chunk-vendors.33b59611.css    504.71 KiB        72.37 KiB
+  dist\css\130.bfde0ba1.css              40.67 KiB         6.26 KiB
+  dist\css\423.2901d613.css              29.88 KiB         4.70 KiB
+  dist\css\140.9162af33.css              24.64 KiB         3.87 KiB
+  dist\css\16.f1891cb4.css               22.69 KiB         3.81 KiB
+  dist\css\515.de980685.css              19.38 KiB         3.41 KiB
+  dist\css\617.767cbb68.css              15.36 KiB         2.68 KiB
+  dist\css\422.76939f6c.css              13.50 KiB         2.71 KiB
+  dist\css\371.f1b4bd60.css              3.35 KiB          1.08 KiB
+  dist\css\473.6e470c56.css              2.69 KiB          0.84 KiB
+
+  Images and other types of assets omitted.
+  Build at: 2025-11-27T05:08:31.398Z - Hash: b177d940b4519445 - Time: 35231ms
+
+ DONE  Build complete. The dist directory is ready to be deployed.
+ INFO  Check out deployment instructions at https://cli.vuejs.org/guide/deployment.html
+       
