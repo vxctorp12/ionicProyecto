@@ -17,7 +17,7 @@
       <div class="input-group">
         <label>Nombre Completo</label>
         <div class="input-wrapper">
-          <ion-input v-model="form.name" placeholder="Ej. Profesor Jirafales" class="custom-input"></ion-input>
+          <ion-input v-model="form.name" placeholder="Ej. Juan Pérez" class="custom-input"></ion-input>
         </div>
       </div>
 
@@ -104,11 +104,36 @@ const confirm = () => {
 </script>
 
 <style scoped>
-
 .input-group { margin-bottom: 20px; }
-.input-group label { display: block; font-size: 13px; font-weight: 600; color: #333; margin-bottom: 8px; }
-.input-wrapper { border: 1px solid #E0E0E0; border-radius: 8px; background: #FFFFFF; padding: 0 12px; transition: all 0.3s; }
-.input-wrapper:focus-within { border-color: var(--ion-color-primary); box-shadow: 0 0 0 4px rgba(var(--ion-color-primary-rgb), 0.15); }
-.custom-input, .custom-select { --padding-start: 0; --background: transparent; --placeholder-color: #A0A0A0; --color: #1A1A1A !important; height: 45px; font-size: 14px; --highlight-height: 0; }
+.input-group label { 
+  display: block; 
+  font-size: 13px; 
+  font-weight: 600; 
+  color: var(--ion-text-color, #333); 
+  margin-bottom: 8px; 
+}
+.input-wrapper { 
+  border: 1px solid #444; 
+  border-radius: 8px; 
+  background: var(--ion-item-background, transparent); 
+  padding: 0 12px; 
+  transition: all 0.3s; 
+}
+.input-wrapper:focus-within { 
+  border-color: var(--ion-color-primary); 
+  box-shadow: 0 0 0 4px rgba(var(--ion-color-primary-rgb), 0.15); 
+  background: rgba(var(--ion-color-primary-rgb), 0.05);
+}
+.custom-input, .custom-select { 
+  --padding-start: 0; 
+  --background: transparent; 
+  --placeholder-color: #666666; 
+  --color: var(--ion-text-color); 
+  color: var(--ion-text-color);
+  height: 45px; 
+  font-size: 14px; 
+  --highlight-height: 0; 
+  width: 100%;
+}
 .helper-text { font-size: 12px; color: #666; margin-top: 5px; }
 </style>

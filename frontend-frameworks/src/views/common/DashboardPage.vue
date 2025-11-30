@@ -3,7 +3,6 @@
     <v-row justify="center">
       <v-col cols="12" md="10" lg="8">
         
-        <!-- Welcome Header -->
         <div class="mb-8 mt-4">
           <div class="d-flex justify-space-between align-center mb-2">
             <div>
@@ -73,7 +72,7 @@
             <v-col cols="12" sm="6" md="4">
               <dashboard-card
                 title="Mis Cursos"
-                icon="mdi-human-male-board"
+                icon="mdi-book-open-variant"
                 color="indigo"
                 description="Gestiona tus cursos y calificaciones"
                 @click="router.push('/mis-cursos')"
@@ -149,6 +148,6 @@ const handleLogout = () => {
 
 <style scoped>
 .dashboard-container {
-  background-color: #0F172A; /* Dark Navy Background */
+  background-color: #0F172A; 
 }
 </style>

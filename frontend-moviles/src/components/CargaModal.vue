@@ -101,11 +101,17 @@ const confirm = () => {
 
 <style scoped>
 .input-group { margin-bottom: 20px; }
-.input-group label { display: block; font-size: 13px; font-weight: 600; color: #333; margin-bottom: 8px; }
+.input-group label { 
+  display: block; 
+  font-size: 13px; 
+  font-weight: 600; 
+  color: var(--ion-text-color, #333); 
+  margin-bottom: 8px; 
+}
 .input-wrapper { 
-  border: 1px solid #E0E0E0; 
+  border: 1px solid #444; 
   border-radius: 8px; 
-  background: #FFFFFF; 
+  background: var(--ion-item-background, transparent); 
   padding: 0 12px; 
   transition: all 0.3s; 
 }
@@ -113,12 +119,12 @@ const confirm = () => {
   border-color: var(--ion-color-primary); 
   border-width: 2px;
   box-shadow: 0 0 0 6px rgba(var(--ion-color-primary-rgb), 0.3); 
-  background-color: #f0f8ff; 
+  background-color: rgba(var(--ion-color-primary-rgb), 0.05); 
 }
 .custom-select { 
   --placeholder-color: #666666; 
-  --color: #000000 !important; 
-  color: #000000;
+  --color: var(--ion-text-color); 
+  color: var(--ion-text-color);
   height: 45px; 
   font-size: 14px; 
   width: 100%; 

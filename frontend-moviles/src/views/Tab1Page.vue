@@ -87,10 +87,10 @@
           <h2 class="section-title">Panel Docente</h2>
           <ion-card button @click="router.push('/mis-cursos')" class="menu-card big-card">
             <ion-card-content class="horizontal-content">
-              <div class="icon-box primary-light big-icon"><ion-icon :icon="easel" color="primary"></ion-icon></div>
+              <div class="icon-box primary-light big-icon"><ion-icon :icon="book" color="primary"></ion-icon></div>
               <div class="text-content">
-                <h2>Mis Cursos y Notas</h2>
-                <p>Accede a tus materias asignadas y califica a tus alumnos.</p>
+                <h2>Mis Cursos</h2>
+                <p>Gestiona tus cursos y calificaciones</p>
               </div>
               <ion-icon :icon="chevronForward" color="medium"></ion-icon>
             </ion-card-content>
@@ -120,7 +120,7 @@ import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
 import {
   school, person, library, layers, logOutOutline, statsChart, card, briefcase,
-  easel, chevronForward
+  book, chevronForward
 } from 'ionicons/icons';
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,

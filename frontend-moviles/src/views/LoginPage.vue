@@ -90,6 +90,7 @@ const handleLogin = async () => {
       duration: 2000,
       color: 'success',
       position: 'top'
+
     });
     await toast.present();
   } catch (error: any) {
@@ -126,18 +127,14 @@ const handleLogin = async () => {
 .login-container { 
   display: flex; 
   justify-content: center; 
-  align-items: flex-start; /* FIX: Alineación superior para evitar saltos */
+  align-items: center; 
   min-height: 100%; 
   padding: 20px;
-  padding-top: 10vh; /* FIX: Espacio superior fijo */
 }
 
 /* --- 2. Tarjeta (Card) --- */
 .login-card { 
   width: 100%; 
-  /* Responsive sizing matching Vuetify breakpoints */
-  /* xs (< 600px) -> 100% (default) */
-  
   border-radius: 16px; 
   /* FONDO DINÁMICO: Blanco en light, #1e1e1e en dark */
   background: var(--ion-card-background, white); 
@@ -184,68 +181,55 @@ const handleLogin = async () => {
   color: var(--ion-text-color, #1a1a1a);
 }
 
-.subtitle { 
-  font-size: 14px; margin-top: 5px; 
-  color: var(--ion-color-medium);
-}
-
 /* --- 4. Inputs --- */
 .input-group { margin-bottom: 20px; text-align: left; }
 
-.input-label { 
-  display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px; 
-  color: var(--ion-text-color, #333); /* Etiqueta dinámica */
+.input-label {
+  display: block;
+  color: #ccc;
+  font-size: 14px;
+  margin-bottom: 8px;
 }
 
-.input-wrapper { 
-  display: flex; align-items: center; 
-  border: 1px solid var(--ion-color-medium-shade); /* Borde sutil basado en el tema */
-  border-radius: 8px; 
-  padding: 0 12px; 
-  transition: all 0.3s cubic-bezier(0.25,0.8,0.25,1);
-  
-  /* FONDO INPUT: Se adapta al modo oscuro (#1e1e1e o similar) */
-  background: var(--ion-item-background, #fff); 
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0 12px;
+  transition: all 0.3s ease;
 }
 
-/* Ajuste manual para modo claro: borde gris suave */
-:host-context(body:not(.dark)) .input-wrapper {
-    border-color: #E0E0E0;
+.input-wrapper:focus-within {
+  border-color: var(--ion-color-primary);
+  background: rgba(var(--ion-color-primary-rgb), 0.1);
 }
 
-.input-wrapper:focus-within { 
-  border-color: var(--ion-color-primary); 
-  box-shadow: 0 0 0 4px rgba(var(--ion-color-primary-rgb),0.15); 
+.input-icon {
+  font-size: 20px;
+  color: #888;
+  margin-right: 10px;
 }
 
-.input-icon { 
-  font-size: 20px; margin-right: 10px; transition: color 0.3s;
-  color: var(--ion-color-medium); 
-}
-.input-wrapper:focus-within .input-icon { color: var(--ion-color-primary); }
-
-.custom-input { 
-  --padding-start:0; --padding-end:0; --background:transparent; 
-  height:45px; font-size:16px; 
-  --highlight-height:0; --highlight-color-focused:transparent; 
-  
-  /* TEXTO INPUT: Blanco en dark, negro en light */
-  --color: var(--ion-text-color) !important; 
-  --placeholder-color: var(--ion-color-medium) !important; 
-  --placeholder-opacity: 0.7; 
+.custom-input {
+  --padding-start: 0;
+  --background: transparent;
+  height: 48px;
+  --color: #ffffff;
+  color: #ffffff;
+  font-size: 15px;
+  --placeholder-color: #666;
+  --placeholder-opacity: 0.7;
 }
 
-/* FIX: Forzar 16px en el input nativo para evitar zoom en iOS */
-:deep(.native-input) {
-  font-size: 16px !important;
+.eye-icon {
+  font-size: 20px;
+  cursor: pointer;
+  color: #888;
+  margin-left: 10px;
 }
 
-.eye-icon { 
-  font-size:20px; cursor:pointer; 
-  color: var(--ion-color-medium);
-}
-
-/* --- 5. Otros --- */
 .forgot-pass { text-align:right; margin-bottom:25px; }
 .forgot-pass a { font-size:13px; color:var(--ion-color-primary); text-decoration:none; font-weight:600; }
 .login-btn { --border-radius:8px; font-weight:700; height:48px; --box-shadow:0 4px 12px rgba(42,103,241,0.3); }

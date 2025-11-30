@@ -101,24 +101,36 @@ const confirm = () => {
   display: block; 
   font-size: 13px; 
   font-weight: 600; 
-  color: #333; 
-  margin-bottom: 8px; 
+  color: var(--ion-text-color, #333);
+  margin-bottom: 8px;
 }
 
-
 .input-wrapper { 
-  border: 1px solid #E0E0E0; 
+  border: 1px solid #444; 
   border-radius: 8px; 
-  background: #FFFFFF; 
+  background: var(--ion-item-background, transparent); 
   padding: 0 12px;
-  height: 45px; 
-  --color: #000000;
-  color: #000000;
-  
+  transition: all 0.3s;
+}
+
+.input-wrapper:focus-within {
+  border-color: var(--ion-color-primary);
+  box-shadow: 0 0 0 4px rgba(var(--ion-color-primary-rgb), 0.15);
+  background: rgba(var(--ion-color-primary-rgb), 0.05);
+}
+
+.custom-input, .custom-select {
+  --padding-start: 0;
+  --background: transparent;
+  height: 45px;
+  --color: var(--ion-text-color);
+  color: var(--ion-text-color);
+
   --placeholder-color: #666666;
   --placeholder-opacity: 1;
 
-  --highlight-height: 0; 
+  --highlight-height: 0;
   --highlight-color-focused: transparent;
+  width: 100%;
 }
 </style>
