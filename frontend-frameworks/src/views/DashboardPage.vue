@@ -48,7 +48,7 @@
             <v-col cols="12" sm="6" md="4">
               <dashboard-card
                 title="Alumnos"
-                icon="mdi-account-school"
+                icon="mdi-account"
                 color="success"
                 @click="router.push('/alumnos')"
               />

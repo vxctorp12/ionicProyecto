@@ -22,7 +22,7 @@
               class="elevation-1"
             >
               <template v-slot:item.actions="{ item }">
-                <v-icon small class="mr-4" @click="openDialog(item)">
+                <v-icon small class="mr-8" @click="openDialog(item)">
                   mdi-pencil
                 </v-icon>
                 <v-icon small color="error" @click="confirmDelete(item)">

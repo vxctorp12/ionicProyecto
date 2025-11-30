@@ -20,6 +20,10 @@ const config: CapacitorConfig = {
 
       // 'DARK' en Capacitor significa "Iconos blancos para fondo oscuro"
       style: 'DARK'
+    },
+    Keyboard: {
+      resize: 'none',
+      resizeOnFullScreen: true
     }
   }
 };

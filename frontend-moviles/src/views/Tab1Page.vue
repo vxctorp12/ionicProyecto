@@ -4,7 +4,6 @@
       <ion-toolbar class="custom-toolbar">
         <ion-title class="custom-title">Panel de Control</ion-title>
         <ion-buttons slot="end">
-          <ThemeToggle />
           <ion-button @click="logout" aria-label="Cerrar Sesión">
             <ion-icon slot="icon-only" :icon="logOutOutline" class="header-icon"></ion-icon>
           </ion-button>
@@ -43,7 +42,7 @@
               <ion-col size="6" size-md="4">
                 <ion-card button @click="router.push('/alumnos')" class="menu-card">
                   <ion-card-content class="card-content-centered">
-                    <div class="icon-box secondary-light"><ion-icon :icon="people" color="secondary"></ion-icon></div>
+                    <div class="icon-box secondary-light"><ion-icon :icon="person" color="secondary"></ion-icon></div>
                     <ion-label>Alumnos</ion-label>
                   </ion-card-content>
                 </ion-card>
@@ -120,7 +119,7 @@ import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
 import {
-  school, people, library, layers, logOutOutline, statsChart, card, briefcase,
+  school, person, library, layers, logOutOutline, statsChart, card, briefcase,
   easel, chevronForward
 } from 'ionicons/icons';
 import {
@@ -128,7 +127,6 @@ import {
   IonCard, IonCardContent, IonGrid, IonRow, IonCol, IonIcon, IonLabel,
   IonButtons, IonButton, IonBadge
 } from '@ionic/vue';
-import ThemeToggle from '@/components/ThemeToggle.vue';
 
 const authStore = useAuthStore();
 const router = useRouter();
@@ -271,5 +269,10 @@ const isDocente = computed(() => authStore.user?.role_id === 2);
 :host-context(body.dark) .orange-light {
   background: rgba(255, 152, 0, 0.2); /* Más suave en modo oscuro */
   color: #ffb74d;
+}
+
+:host-context(body.dark) .secondary-light {
+  background: rgba(var(--ion-color-secondary-rgb), 0.2);
+  color: var(--ion-color-secondary-tint);
 }
 </style>

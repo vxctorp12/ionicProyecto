@@ -12,14 +12,14 @@ export default createVuetify({
       myCustomDarkTheme: {
         dark: true,
         colors: {
-          background: '#0F172A', // Dark Navy
-          surface: '#1E293B',    // Lighter Navy for cards
-          primary: '#2563EB',    // Bright Blue
-          secondary: '#64748B',
-          error: '#EF4444',
-          info: '#3B82F6',
-          success: '#10B981',
-          warning: '#F59E0B',
+          background: '#121212', // Ionic Dark Background
+          surface: '#1e1e1e',    // Ionic Dark Card
+          primary: '#2A67F1',    // Ionic Blue
+          secondary: '#00A693',  // Ionic Secondary
+          error: '#eb445a',      // Ionic Danger
+          info: '#2A67F1',       // Ionic Primary as Info
+          success: '#28ba62',    // Ionic Success
+          warning: '#ffc409',    // Ionic Warning
         },
       },
     },

@@ -1,9 +1,7 @@
 <template>
   <ion-page>
     <ion-content class="login-content" :fullscreen="true">
-      <ThemeToggle />
-      
-      <div class="login-container safe-area-top">
+      <div class="login-container">
         
         <ion-card class="login-card">
           <ion-card-content class="ion-padding">
@@ -72,7 +70,6 @@ import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
 import { school, mail, lockClosed, eye, eyeOff } from 'ionicons/icons';
 import { IonPage, IonContent, IonCard, IonCardContent, IonInput, IonButton, IonIcon, IonSpinner, toastController } from '@ionic/vue';
-import ThemeToggle from '@/components/ThemeToggle.vue';
 
 const authStore = useAuthStore();
 const router = useRouter();
@@ -129,22 +126,44 @@ const handleLogin = async () => {
 .login-container { 
   display: flex; 
   justify-content: center; 
-  align-items: center; 
+  align-items: flex-start; /* FIX: Alineación superior para evitar saltos */
   min-height: 100%; 
   padding: 20px;
+  padding-top: 10vh; /* FIX: Espacio superior fijo */
 }
-
-
 
 /* --- 2. Tarjeta (Card) --- */
 .login-card { 
   width: 100%; 
-  max-width: 400px; 
+  /* Responsive sizing matching Vuetify breakpoints */
+  /* xs (< 600px) -> 100% (default) */
+  
   border-radius: 16px; 
   /* FONDO DINÁMICO: Blanco en light, #1e1e1e en dark */
   background: var(--ion-card-background, white); 
   box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
   overflow: visible; 
+}
+
+/* sm (>= 600px) -> 8/12 = 66.66% */
+@media (min-width: 600px) {
+  .login-card {
+    width: 66.66%;
+  }
+}
+
+/* md (>= 960px) -> 6/12 = 50% */
+@media (min-width: 960px) {
+  .login-card {
+    width: 50%;
+  }
+}
+
+/* lg (>= 1280px) -> 4/12 = 33.33% */
+@media (min-width: 1280px) {
+  .login-card {
+    width: 33.33%;
+  }
 }
 
 /* --- 3. Elementos Visuales --- */
@@ -207,13 +226,18 @@ const handleLogin = async () => {
 
 .custom-input { 
   --padding-start:0; --padding-end:0; --background:transparent; 
-  height:45px; font-size:14px; 
+  height:45px; font-size:16px; 
   --highlight-height:0; --highlight-color-focused:transparent; 
   
   /* TEXTO INPUT: Blanco en dark, negro en light */
   --color: var(--ion-text-color) !important; 
   --placeholder-color: var(--ion-color-medium) !important; 
   --placeholder-opacity: 0.7; 
+}
+
+/* FIX: Forzar 16px en el input nativo para evitar zoom en iOS */
+:deep(.native-input) {
+  font-size: 16px !important;
 }
 
 .eye-icon { 

@@ -31,7 +31,10 @@
                 {{ item.anio }}
               </template>
               <template v-slot:item.actions="{ item }">
-                <v-icon small class="mr-4" @click="confirmDelete(item)">
+                <v-icon small class="mr-4" @click="openDialog(item)">
+                  mdi-pencil
+                </v-icon>
+                <v-icon small color="error" @click="confirmDelete(item)">
                   mdi-delete
                 </v-icon>
               </template>
@@ -130,6 +133,7 @@ const newItem = ref({
   grado_id: null,
 });
 const defaultItem = {
+  id: null,
   user_id: null,
   grado_id: null,
 };
@@ -170,8 +174,16 @@ onMounted(() => {
   loadLists();
 });
 
-const openDialog = () => {
-  newItem.value = { ...defaultItem };
+const openDialog = (item) => {
+  if (item) {
+    newItem.value = {
+      id: item.id,
+      user_id: item.user_id || (item.user ? item.user.id : null),
+      grado_id: item.grado_id || (item.grado ? item.grado.id : null),
+    };
+  } else {
+    newItem.value = { ...defaultItem };
+  }
   dialog.value = true;
 };
 
@@ -187,12 +199,17 @@ const save = async () => {
   }
 
   try {
-    await axios.post('/matriculas', newItem.value);
-    showSnackbar('Alumno inscrito correctamente');
+    if (newItem.value.id) {
+      await axios.put(`/matriculas/${newItem.value.id}`, newItem.value);
+      showSnackbar('Matrícula actualizada');
+    } else {
+      await axios.post('/matriculas', newItem.value);
+      showSnackbar('Alumno inscrito correctamente');
+    }
     loadMatriculas();
     closeDialog();
   } catch (error) {
-    const msg = error.response?.data?.message || 'Error al inscribir';
+    const msg = error.response?.data?.message || 'Error al guardar';
     showSnackbar(msg, 'error');
   }
 };

@@ -2,57 +2,66 @@
   <v-container class="fill-height login-container" fluid>
     <v-row align="center" justify="center">
       <v-col cols="12" sm="8" md="6" lg="4">
-        <v-card class="elevation-12 login-card pa-6">
+        <v-card class="login-card pa-6">
           <v-card-text class="text-center">
-            <h1 class="text-h4 font-weight-bold mb-2 text-white">Portal Estudiantil</h1>
-            <p class="text-subtitle-1 text-medium-emphasis mb-6">Bienvenido, por favor inicia sesión.</p>
+            <div class="logo-container">
+              <div class="logo-box">
+                <v-icon icon="mdi-school" color="white" size="32"></v-icon>
+              </div>
+              <h1 class="title">Portal Estudiantil</h1>
+              <p class="subtitle">Bienvenido de nuevo</p>
+            </div>
 
             <v-form @submit.prevent="handleLogin">
               <div class="text-left mb-1">
-                <label class="text-caption font-weight-bold ml-1">Correo Electrónico</label>
+                <label class="input-label">Correo Institucional</label>
               </div>
-              <v-text-field
-                v-model="email"
-                placeholder="ejemplo@correo.com"
-                name="email"
-                type="email"
-                variant="outlined"
-                bg-color="#111827"
-                color="primary"
-                required
-                class="mb-2"
-              ></v-text-field>
+              <div class="input-wrapper mb-4">
+                <v-icon icon="mdi-email" class="input-icon mr-2"></v-icon>
+                <input 
+                  v-model="email"
+                  type="email"
+                  placeholder="ejemplo@universidad.edu"
+                  class="custom-input"
+                  required
+                />
+              </div>
 
               <div class="text-left mb-1">
-                <label class="text-caption font-weight-bold ml-1">Contraseña</label>
+                <label class="input-label">Contraseña</label>
               </div>
-              <v-text-field
-                v-model="password"
-                placeholder="Ingresa tu contraseña"
-                name="password"
-                type="password"
-                variant="outlined"
-                bg-color="#111827"
-                color="primary"
-                required
-                class="mb-4"
-              ></v-text-field>
+              <div class="input-wrapper mb-4">
+                <v-icon icon="mdi-lock" class="input-icon mr-2"></v-icon>
+                <input 
+                  v-model="password"
+                  :type="showPassword ? 'text' : 'password'"
+                  placeholder="********"
+                  class="custom-input"
+                  required
+                />
+                <v-icon 
+                  :icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'" 
+                  class="eye-icon"
+                  @click="showPassword = !showPassword"
+                ></v-icon>
+              </div>
+
+              <div class="text-right mb-6">
+                <a href="#" class="forgot-pass-link">¿Olvidaste tu contraseña?</a>
+              </div>
 
               <v-btn
                 block
-                color="primary"
+                color="#2A67F1"
                 size="large"
                 type="submit"
                 :loading="loading"
-                class="text-capitalize font-weight-bold mb-4"
-                height="50"
+                class="login-btn mb-4"
+                height="48"
+                elevation="2"
               >
-                Acceder
+                INGRESAR
               </v-btn>
-
-              <div class="text-center">
-                <a href="#" class="text-decoration-none text-caption text-medium-emphasis">¿Olvidaste tu contraseña?</a>
-              </div>
             </v-form>
           </v-card-text>
         </v-card>
@@ -75,6 +84,7 @@ import { useRouter } from 'vue-router';
 
 const email = ref('');
 const password = ref('');
+const showPassword = ref(false);
 const loading = ref(false);
 const snackbar = ref(false);
 const snackbarText = ref('');
@@ -112,11 +122,110 @@ const showSnackbar = (text, color) => {
 
 <style scoped>
 .login-container {
-  background-color: #0F172A; /* Match theme background */
+  background-color: #121212;
 }
+
 .login-card {
-  background-color: #1E293B !important; /* Match theme surface */
-  border: 1px solid #334155;
+  background-color: #1e1e1e !important;
   border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.logo-box {
+  background-color: #2A67F1;
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 10px rgba(42,103,241,0.3);
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  color: #ffffff;
+}
+
+.subtitle {
+  font-size: 14px;
+  margin-top: 5px;
+  color: #bbbbbb;
+}
+
+.input-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #5a5a5a;
+  border-radius: 8px;
+  padding: 0 12px;
+  background: #1e1e1e;
+  transition: all 0.3s;
+  height: 48px;
+}
+
+.input-wrapper:focus-within {
+  border-color: #2A67F1;
+  box-shadow: 0 0 0 4px rgba(42,103,241,0.15);
+}
+
+.input-icon {
+  color: #666666;
+}
+
+.input-wrapper:focus-within .input-icon {
+  color: #2A67F1;
+}
+
+.custom-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 14px;
+  outline: none;
+  height: 100%;
+}
+
+.custom-input::placeholder {
+  color: #666666;
+  opacity: 0.7;
+}
+
+.eye-icon {
+  color: #666666;
+  cursor: pointer;
+}
+
+.forgot-pass-link {
+  font-size: 13px;
+  color: #2A67F1;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-btn {
+  border-radius: 8px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(42,103,241,0.3);
+  color: white !important;
 }
 </style>
