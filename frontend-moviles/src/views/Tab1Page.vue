@@ -162,9 +162,7 @@ const isDocente = computed(() => authStore.user?.role_id === 2);
   margin: 0 auto;
 }
 
-/* Welcome Section (Tarjeta de Bienvenida) */
 .welcome-section { 
-  /* CAMBIO: Usamos variable para que se ponga oscura en Dark Mode */
   background: var(--ion-card-background, white); 
   
   border-radius: 16px; 
@@ -188,7 +186,6 @@ const isDocente = computed(() => authStore.user?.role_id === 2);
 
 .greeting { 
   margin: 0; font-size: 1.2rem; font-weight: 700; 
-  /* CAMBIO: Texto dinámico (negro en light, blanco en dark) */
   color: var(--ion-text-color, var(--ion-color-dark)); 
 }
 
@@ -200,13 +197,11 @@ const isDocente = computed(() => authStore.user?.role_id === 2);
   margin-bottom: 15px; margin-left: 5px; 
 }
 
-/* Tarjetas de Menú */
 .menu-card {
   margin: 5px;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   
-  /* CAMBIO: Fondo dinámico para Dark Mode */
   --background: var(--ion-card-background, white); 
   background: var(--ion-card-background, white);
   
@@ -231,7 +226,6 @@ const isDocente = computed(() => authStore.user?.role_id === 2);
 
 .menu-card ion-label { 
   font-weight: 600; 
-  /* CAMBIO: Texto dinámico */
   color: var(--ion-text-color, var(--ion-color-dark)); 
   font-size: 0.9rem; 
   margin-top: 10px; 
@@ -243,7 +237,6 @@ const isDocente = computed(() => authStore.user?.role_id === 2);
 
 .text-content h2 { 
   margin: 0; font-size: 1.1rem; font-weight: 700; 
-  /* CAMBIO: Texto dinámico */
   color: var(--ion-text-color, var(--ion-color-dark)); 
 }
 
@@ -257,7 +250,6 @@ const isDocente = computed(() => authStore.user?.role_id === 2);
 }
 .big-icon { width: 60px; height: 60px; font-size: 30px; }
 
-/* Fondos claros para iconos (se mantienen igual, funcionan bien en ambos modos) */
 .primary-light { background: rgba(var(--ion-color-primary-rgb), 0.1); }
 .secondary-light { background: rgba(var(--ion-color-secondary-rgb), 0.1); }
 .tertiary-light { background: rgba(var(--ion-color-tertiary-rgb), 0.1); }
@@ -265,9 +257,8 @@ const isDocente = computed(() => authStore.user?.role_id === 2);
 .orange-light { background: #FFF3E0; color: #FF9800; }
 .teal-light { background: rgba(var(--ion-color-secondary-rgb), 0.15); }
 
-/* Ajuste específico para el icono naranja en modo oscuro */
 :host-context(body.dark) .orange-light {
-  background: rgba(255, 152, 0, 0.2); /* Más suave en modo oscuro */
+  background: rgba(255, 152, 0, 0.2);
   color: #ffb74d;
 }
 

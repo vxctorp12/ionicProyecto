@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import TabsPage from '../views/TabsPage.vue'
-import LoginPage from '../views/LoginPage.vue' // <--- IMPORTAR LA VISTA
+import LoginPage from '../views/LoginPage.vue'
 import GradosPage from '@/views/GradosPage.vue';
 import MateriasPage from '@/views/MateriasPage.vue';
 import DocentesPage from '@/views/DocentesPage.vue';
@@ -15,22 +15,22 @@ import MisNotasPage from '@/views/MisNotasPage.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/login' 
+    redirect: '/login'
   },
   {
-    path: '/mis-notas', 
-    component: MisNotasPage   
+    path: '/mis-notas',
+    component: MisNotasPage
   },
   {
-    path: '/login', 
+    path: '/login',
     component: LoginPage
   },
   {
-    path: '/mis-cursos', 
-    component: DocenteCursosPage  
+    path: '/mis-cursos',
+    component: DocenteCursosPage
   },
   {
-    path: '/grados', 
+    path: '/grados',
     component: GradosPage
   },
   {
@@ -39,23 +39,23 @@ const routes: Array<RouteRecordRaw> = [
     component: NotasPage
   },
   {
-    path: '/cargas', 
+    path: '/cargas',
     component: CargasPage
   },
   {
-    path: '/materias', 
+    path: '/materias',
     component: MateriasPage
   },
   {
-    path: '/docentes', 
+    path: '/docentes',
     component: DocentesPage
   },
   {
-    path: '/alumnos', 
+    path: '/alumnos',
     component: AlumnosPage
   },
   {
-    path: '/matriculas', 
+    path: '/matriculas',
     component: MatriculasPage
   },
   {
