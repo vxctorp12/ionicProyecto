@@ -162,3 +162,13 @@ body.dark .text-content p {
 body.dark .info-card h3 {
   color: #ffffff;
 }
+
+/* Custom Action Sheet for MateriaModal Select */
+.custom-action-sheet .action-sheet-button {
+  color: #ffffff !important;
+  --color: #ffffff;
+}
+.custom-action-sheet .action-sheet-button.action-sheet-selected {
+  color: var(--ion-color-primary) !important;
+}
+

@@ -30,6 +30,7 @@
         <ion-select 
             v-model="form.grado_id" 
             interface="action-sheet" 
+            :interface-options="customActionSheetOptions"
             placeholder="Selecciona el grado" 
             class="custom-select"
         >
@@ -60,6 +61,10 @@ const form = ref({
 });
 
 const grados = ref<any[]>([]);
+
+const customActionSheetOptions = {
+  cssClass: 'custom-action-sheet',
+};
 
 
 onMounted(async () => {
@@ -106,25 +111,12 @@ const confirm = () => {
   border-radius: 8px; 
   background: #FFFFFF; 
   padding: 0 12px;
-  
- 
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-
-.input-wrapper:focus-within { 
-  border-color: var(--ion-color-primary); 
-
-  box-shadow: 0 0 0 4px rgba(var(--ion-color-primary-rgb), 0.15); 
-}
-
-
-.custom-input, .custom-select { 
-  --padding-start: 0; 
-  --background: transparent; 
   height: 45px; 
-  --color: #1A1A1A;
+  --color: #000000;
+  color: #000000;
   
+  --placeholder-color: #666666;
+  --placeholder-opacity: 1;
 
   --highlight-height: 0; 
   --highlight-color-focused: transparent;

@@ -20,6 +20,7 @@
           <ion-select 
             v-model="form.user_id" 
             interface="action-sheet" 
+            :interface-options="customActionSheetOptions"
             placeholder="Busca un docente" 
             class="custom-select"
           >
@@ -36,6 +37,7 @@
           <ion-select 
             v-model="form.materia_id" 
             interface="action-sheet" 
+            :interface-options="customActionSheetOptions"
             placeholder="Selecciona la materia" 
             class="custom-select"
           >
@@ -67,6 +69,10 @@ const form = ref({
 const docentes = ref<any[]>([]);
 const materias = ref<any[]>([]);
 
+const customActionSheetOptions = {
+  cssClass: 'custom-action-sheet',
+};
+
 onMounted(async () => {
   try {
 
@@ -96,7 +102,25 @@ const confirm = () => {
 <style scoped>
 .input-group { margin-bottom: 20px; }
 .input-group label { display: block; font-size: 13px; font-weight: 600; color: #333; margin-bottom: 8px; }
-.input-wrapper { border: 1px solid #E0E0E0; border-radius: 8px; background: #FFFFFF; padding: 0 12px; transition: all 0.3s; }
-.input-wrapper:focus-within { border-color: var(--ion-color-primary); box-shadow: 0 0 0 4px rgba(var(--ion-color-primary-rgb), 0.15); }
-.custom-select { --placeholder-color: #A0A0A0; --color: #1A1A1A !important; height: 45px; font-size: 14px; width: 100%; }
+.input-wrapper { 
+  border: 1px solid #E0E0E0; 
+  border-radius: 8px; 
+  background: #FFFFFF; 
+  padding: 0 12px; 
+  transition: all 0.3s; 
+}
+.input-wrapper:focus-within { 
+  border-color: var(--ion-color-primary); 
+  border-width: 2px;
+  box-shadow: 0 0 0 6px rgba(var(--ion-color-primary-rgb), 0.3); 
+  background-color: #f0f8ff; 
+}
+.custom-select { 
+  --placeholder-color: #666666; 
+  --color: #000000 !important; 
+  color: #000000;
+  height: 45px; 
+  font-size: 14px; 
+  width: 100%; 
+}
 </style>
