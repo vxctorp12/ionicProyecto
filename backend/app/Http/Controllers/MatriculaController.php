@@ -45,12 +45,11 @@ class MatriculaController extends Controller implements HasMiddleware
         }
 
         $existe = Matricula::where('user_id', $request->user_id)
-                            ->where('grado_id', $request->grado_id)
                             ->where('anio', date('Y'))
                             ->exists();
 
         if ($existe) {
-            return response()->json(['message' => 'El alumno ya está matriculado en este grado'], 409);
+            return response()->json(['message' => 'El alumno ya está matriculado en un grado este año'], 409);
         }
 
         $matricula = Matricula::create([

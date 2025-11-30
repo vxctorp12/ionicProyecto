@@ -25,6 +25,10 @@ class UserController extends Controller implements HasMiddleware
             $query->where('role_id', $request->role_id);
         }
 
+        if ($request->has('email')) {
+            $query->where('email', $request->email);
+        }
+
         return $query->orderBy('id', 'desc')->get();
     }
 

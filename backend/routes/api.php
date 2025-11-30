@@ -14,7 +14,6 @@ Route::get('/test', function () {
     return 'API funcionando';
 });
 
-// --- GRUPO 1: Autenticación ---
 Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
@@ -24,14 +23,10 @@ Route::group([
     Route::post('me', [AuthController::class, 'me']);
 });
 
-// --- GRUPO 2: Rutas Protegidas (AQUÍ va el cambio) ---
 Route::middleware(['api', 'auth:api'])->group(function () {
     
-    // 1. Ruta de cambiar contraseña (Moverla aquí adentro)
-    // Al estar aquí, usa auth:api automáticamente y reconoce tu token
     Route::post('/change-password', [AuthController::class, 'changePassword']);
 
-    // 2. Resto de recursos
     Route::apiResource('users', UserController::class);
     Route::apiResource('grados', GradoController::class);
     Route::apiResource('materias', MateriaController::class);

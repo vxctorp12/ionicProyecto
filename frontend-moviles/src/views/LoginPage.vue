@@ -118,9 +118,7 @@ const handleLogin = async () => {
 </script>
 
 <style scoped>
-/* --- 1. Fondo y Layout --- */
 .login-content {
-  /* Usa el fondo global (#F7F7F7 en light, #121212 en dark) */
   --background: var(--ion-background-color);
 }
 
@@ -132,38 +130,32 @@ const handleLogin = async () => {
   padding: 20px;
 }
 
-/* --- 2. Tarjeta (Card) --- */
 .login-card { 
   width: 100%; 
   border-radius: 16px; 
-  /* FONDO DINÁMICO: Blanco en light, #1e1e1e en dark */
   background: var(--ion-card-background, white); 
   box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
   overflow: visible; 
 }
 
-/* sm (>= 600px) -> 8/12 = 66.66% */
 @media (min-width: 600px) {
   .login-card {
     width: 66.66%;
   }
 }
 
-/* md (>= 960px) -> 6/12 = 50% */
 @media (min-width: 960px) {
   .login-card {
     width: 50%;
   }
 }
 
-/* lg (>= 1280px) -> 4/12 = 33.33% */
 @media (min-width: 1280px) {
   .login-card {
     width: 33.33%;
   }
 }
 
-/* --- 3. Elementos Visuales --- */
 .logo-container { text-align: center; margin-bottom: 30px; display: flex; flex-direction: column; align-items: center; }
 
 .logo-box { 
@@ -177,11 +169,9 @@ const handleLogin = async () => {
 
 .title { 
   font-size: 22px; font-weight: 700; margin: 0;
-  /* TEXTO DINÁMICO: Negro en light, Blanco en dark */
   color: var(--ion-text-color, #1a1a1a);
 }
 
-/* --- 4. Inputs --- */
 .input-group { margin-bottom: 20px; text-align: left; }
 
 .input-label {

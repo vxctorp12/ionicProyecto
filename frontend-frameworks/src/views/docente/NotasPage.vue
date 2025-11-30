@@ -19,7 +19,6 @@
           </v-toolbar>
 
           <v-card-text>
-            <!-- Vista de Actividades -->
             <div v-if="!vistaCalificar">
               <div class="d-flex justify-space-between align-center mb-4">
                 <span class="text-h6">Actividades del {{ periodoSeleccionado }}</span>
@@ -53,7 +52,6 @@
               </div>
             </div>
 
-            <!-- Vista de Calificación -->
             <div v-else>
               <div class="d-flex align-center mb-4">
                 <v-btn icon variant="text" @click="vistaCalificar = false" class="mr-2">
@@ -94,7 +92,6 @@
       </v-col>
     </v-row>
 
-    <!-- Dialogo Nueva Actividad -->
     <v-dialog v-model="dialogActividad" max-width="400">
       <v-card>
         <v-card-title>Nueva Actividad</v-card-title>

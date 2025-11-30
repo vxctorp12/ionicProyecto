@@ -23,6 +23,7 @@
             :interface-options="customActionSheetOptions"
             placeholder="Busca un alumno" 
             class="custom-select"
+            @ionChange="checkEnrollment"
           >
             <ion-select-option v-for="alumno in alumnos" :key="alumno.id" :value="alumno.id">
               {{ alumno.name }} ({{ alumno.email }})
@@ -88,13 +89,42 @@ onMounted(async () => {
   }
 });
 
+const checkEnrollment = async () => {
+  if (!form.value.user_id) return;
+  
+  try {
+    const response = await axios.get(`/matriculas?user_id=${form.value.user_id}`);
+    const matriculas = response.data;
+    
+    if (matriculas.length > 0) {
+      const grado = matriculas[0].grado ? matriculas[0].grado.nombre : 'un grado';
+      alert(`El alumno ya está matriculado en ${grado}`);
+      form.value.user_id = null; // Reset selection
+    }
+  } catch (error) {
+    console.error('Error verificando matrícula', error);
+  }
+};
+
 const cancel = () => modalController.dismiss(null, 'cancel');
 
-const confirm = () => {
+const confirm = async () => {
   if (!form.value.user_id || !form.value.grado_id) {
     alert('Debes seleccionar alumno y grado');
     return;
   }
+  
+  // Final check before submit
+  try {
+    const response = await axios.get(`/matriculas?user_id=${form.value.user_id}`);
+    if (response.data.length > 0) {
+      alert('El alumno ya tiene una matrícula activa');
+      return;
+    }
+  } catch (error) {
+    console.error('Error final check', error);
+  }
+
   modalController.dismiss(form.value, 'confirm');
 };
 </script>
