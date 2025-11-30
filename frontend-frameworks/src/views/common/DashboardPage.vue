@@ -17,9 +17,7 @@
           <v-divider class="mb-6"></v-divider>
         </div>
 
-        <!-- Modules Grid -->
         <v-row v-if="user" justify="center">
-          <!-- Admin Modules -->
           <template v-if="isAdmin">
             <v-col cols="12" sm="6" md="4">
               <dashboard-card
@@ -71,7 +69,6 @@
             </v-col>
           </template>
 
-          <!-- Docente Modules -->
           <template v-if="isDocente">
             <v-col cols="12" sm="6" md="4">
               <dashboard-card
@@ -84,7 +81,6 @@
             </v-col>
           </template>
 
-          <!-- Alumno Modules -->
           <template v-if="isAlumno">
             <v-col cols="12" sm="6" md="4">
               <dashboard-card
@@ -102,7 +98,6 @@
           <v-progress-circular indeterminate color="primary"></v-progress-circular>
         </div>
 
-        <!-- Logout Button (Floating or Bottom) -->
         <div class="d-flex justify-center mt-12 gap-4">
           <change-password-dialog />
           
@@ -123,10 +118,10 @@
 
 <script setup>
 import { computed } from 'vue';
-import { useAuthStore } from '../stores/auth';
+import { useAuthStore } from '../../stores/auth';
 import { useRouter } from 'vue-router';
-import DashboardCard from '../components/DashboardCard.vue';
-import ChangePasswordDialog from '../components/ChangePasswordDialog.vue';
+import DashboardCard from '../../components/DashboardCard.vue';
+import ChangePasswordDialog from '../../components/ChangePasswordDialog.vue';
 
 const authStore = useAuthStore();
 const router = useRouter();

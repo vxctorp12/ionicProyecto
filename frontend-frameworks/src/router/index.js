@@ -9,66 +9,66 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('../views/LoginPage.vue')
+    component: () => import('../views/auth/LoginPage.vue')
   },
   {
     path: '/dashboard',
     name: 'dashboard',
-    component: () => import('../views/DashboardPage.vue'),
+    component: () => import('../views/common/DashboardPage.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/grados',
     name: 'grados',
-    component: () => import('../views/GradosPage.vue'),
+    component: () => import('../views/admin/GradosPage.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/materias',
     name: 'materias',
-    component: () => import('../views/MateriasPage.vue'),
+    component: () => import('../views/admin/MateriasPage.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/docentes',
     name: 'docentes',
-    component: () => import('../views/DocentesPage.vue'),
+    component: () => import('../views/admin/DocentesPage.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/alumnos',
     name: 'alumnos',
-    component: () => import('../views/AlumnosPage.vue'),
+    component: () => import('../views/admin/AlumnosPage.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/matriculas',
     name: 'matriculas',
-    component: () => import('../views/MatriculasPage.vue'),
+    component: () => import('../views/admin/MatriculasPage.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/cargas',
     name: 'cargas',
-    component: () => import('../views/CargasPage.vue'),
+    component: () => import('../views/admin/CargasPage.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/mis-cursos',
     name: 'mis-cursos',
-    component: () => import('../views/DocenteCursosPage.vue'),
+    component: () => import('../views/docente/DocenteCursosPage.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/notas/:materiaId/:gradoId/:nombreMateria',
     name: 'notas',
-    component: () => import('../views/NotasPage.vue'),
+    component: () => import('../views/docente/NotasPage.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/mis-calificaciones',
     name: 'mis-calificaciones',
-    component: () => import('../views/MisNotasPage.vue'),
+    component: () => import('../views/alumno/MisNotasPage.vue'),
     meta: { requiresAuth: true }
   }
 ]
